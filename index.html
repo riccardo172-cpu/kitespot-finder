@@ -3,14 +3,517 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>KiteSpot Finder</title>
+
+    <meta name="theme-color" content="#071923">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #071923;
+            color: white;
+        }
+
+        .app {
+            max-width: 900px;
+            margin: auto;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 10px 25px;
+        }
+
+        .logo {
+            font-size: 42px;
+            margin-bottom: 5px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: #9fc3d1;
+            font-size: 16px;
+        }
+
+        .card {
+            background: #102b38;
+            border-radius: 20px;
+            padding: 22px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .location-button {
+            width: 100%;
+            border: none;
+            border-radius: 14px;
+            padding: 17px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            background: #19a7ce;
+            color: white;
+        }
+
+        .location-button:hover {
+            opacity: 0.9;
+        }
+
+        #locationStatus {
+            margin-top: 12px;
+            color: #9fc3d1;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .dates {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .date-button {
+            border: 2px solid #285263;
+            background: #0b202b;
+            color: white;
+            border-radius: 13px;
+            padding: 13px 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .date-button strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .date-button.active {
+            background: #19a7ce;
+            border-color: #19a7ce;
+        }
+
+        .search-button {
+            width: 100%;
+            margin-top: 18px;
+            border: none;
+            border-radius: 14px;
+            padding: 17px;
+            background: #f4a623;
+            color: #071923;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .search-button:hover {
+            opacity: 0.9;
+        }
+
+        .results {
+            display: none;
+        }
+
+        .results.visible {
+            display: block;
+        }
+
+        .spot {
+            background: #0b202b;
+            border: 1px solid #285263;
+            border-radius: 16px;
+            padding: 18px;
+            margin-top: 12px;
+        }
+
+        .spot-name {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .spot-info {
+            color: #9fc3d1;
+            margin-top: 6px;
+        }
+
+        .wind {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .wind-box {
+            background: #102b38;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .wind-box span {
+            display: block;
+            color: #8eacb7;
+            font-size: 12px;
+        }
+
+        .wind-box strong {
+            display: block;
+            margin-top: 4px;
+            font-size: 18px;
+        }
+
+        .links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .links a {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .windguru {
+            background: #19a7ce;
+            color: white;
+        }
+
+        .maps {
+            background: #285263;
+            color: white;
+        }
+
+        .note {
+            text-align: center;
+            color: #708e99;
+            font-size: 13px;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 600px) {
+
+            .app {
+                padding: 12px;
+            }
+
+            h1 {
+                font-size: 27px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .dates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .wind {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>🏄 KiteSpot Finder</h1>
+<div class="app">
 
-    <p>La nuova app per trovare dove fare kite.</p>
+    <header class="header">
+        <div class="logo">🪁</div>
+        <h1>KiteSpot Finder</h1>
+        <div class="subtitle">
+            Trova dove fare kite in base alla tua posizione
+        </div>
+    </header>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            📍 La tua posizione
+        </div>
+
+        <button class="location-button" onclick="getLocation()">
+            📍 USA LA MIA POSIZIONE
+        </button>
+
+        <div id="locationStatus">
+            Posizione non ancora rilevata
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-title">
+            📅 Quando vuoi fare kite?
+        </div>
+
+        <div class="dates">
+
+            <button class="date-button active" onclick="selectDate(this, 0)">
+                <strong>OGGI</strong>
+                <span id="todayDate"></span>
+            </button>
+
+            <button class="date-button" onclick="selectDate(this, 1)">
+                <strong>DOMANI</strong>
+                <span id="tomorrowDate"></span>
+            </button>
+
+            <button class="date-button" onclick="selectDate(this, 2)">
+                <strong>+2 GIORNI</strong>
+                <span id="day2Date"></span>
+            </button>
+
+            <button class="date-button" onclick="selectDate(this, 7)">
+                <strong>+7 GIORNI</strong>
+                <span id="day7Date"></span>
+            </button>
+
+        </div>
+
+        <button class="search-button" onclick="searchSpots()">
+            🪁 CERCA DOVE FARE KITE
+        </button>
+
+    </div>
+
+
+    <div id="results" class="card results">
+
+        <div class="card-title">
+            🪁 Spot disponibili
+        </div>
+
+        <div class="spot">
+
+            <div class="spot-name">
+                Sottomarina
+            </div>
+
+            <div class="spot-info">
+                📍 Spot kite • distanza da calcolare
+            </div>
+
+            <div class="wind">
+
+                <div class="wind-box">
+                    <span>VENTO</span>
+                    <strong>-- kn</strong>
+                </div>
+
+                <div class="wind-box">
+                    <span>RAFFICHE</span>
+                    <strong>-- kn</strong>
+                </div>
+
+                <div class="wind-box">
+                    <span>DIREZIONE</span>
+                    <strong>--°</strong>
+                </div>
+
+            </div>
+
+            <div class="links">
+
+                <a class="windguru"
+                   href="https://www.windguru.cz/"
+                   target="_blank">
+                    WINDGURU
+                </a>
+
+                <a class="maps"
+                   href="https://www.google.com/maps/"
+                   target="_blank">
+                    🗺️ MAPPA
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="spot">
+
+            <div class="spot-name">
+                Lago di Santa Croce
+            </div>
+
+            <div class="spot-info">
+                📍 Spot kite • distanza da calcolare
+            </div>
+
+            <div class="wind">
+
+                <div class="wind-box">
+                    <span>VENTO</span>
+                    <strong>-- kn</strong>
+                </div>
+
+                <div class="wind-box">
+                    <span>RAFFICHE</span>
+                    <strong>-- kn</strong>
+                </div>
+
+                <div class="wind-box">
+                    <span>DIREZIONE</span>
+                    <strong>--°</strong>
+                </div>
+
+            </div>
+
+            <div class="links">
+
+                <a class="windguru"
+                   href="https://www.windguru.cz/"
+                   target="_blank">
+                    WINDGURU
+                </a>
+
+                <a class="maps"
+                   href="https://www.google.com/maps/"
+                   target="_blank">
+                    🗺️ MAPPA
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="note">
+        KiteSpot Finder • versione in sviluppo
+    </div>
+
+</div>
+
+
+<script>
+
+let selectedDay = 0;
+let userLatitude = null;
+let userLongitude = null;
+
+
+/* DATE */
+
+function formatDate(days) {
+
+    const date = new Date();
+
+    date.setDate(date.getDate() + days);
+
+    return date.toLocaleDateString("it-IT", {
+        day: "2-digit",
+        month: "2-digit"
+    });
+}
+
+
+document.getElementById("todayDate").textContent = formatDate(0);
+document.getElementById("tomorrowDate").textContent = formatDate(1);
+document.getElementById("day2Date").textContent = formatDate(2);
+document.getElementById("day7Date").textContent = formatDate(7);
+
+
+/* SELEZIONE DATA */
+
+function selectDate(button, days) {
+
+    selectedDay = days;
+
+    document.querySelectorAll(".date-button").forEach(function(btn) {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+}
+
+
+/* GPS */
+
+function getLocation() {
+
+    const status = document.getElementById("locationStatus");
+
+    if (!navigator.geolocation) {
+
+        status.textContent =
+            "La geolocalizzazione non è supportata dal dispositivo.";
+
+        return;
+    }
+
+    status.textContent =
+        "📡 Sto rilevando la tua posizione...";
+
+    navigator.geolocation.getCurrentPosition(
+
+        function(position) {
+
+            userLatitude = position.coords.latitude;
+            userLongitude = position.coords.longitude;
+
+            status.textContent =
+                "✅ Posizione rilevata correttamente";
+
+        },
+
+        function(error) {
+
+            status.textContent =
+                "❌ Non è stato possibile rilevare la posizione.";
+
+        }
+
+    );
+}
+
+
+/* CERCA */
+
+function searchSpots() {
+
+    const results = document.getElementById("results");
+
+    results.classList.add("visible");
+
+    results.scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+</script>
 
 </body>
 </html>
