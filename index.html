@@ -1149,7 +1149,7 @@ footer{
   id="status"
   class="status"
 >
-  Inserisci una località e avvia la ricerca.
+  Caricamento database spot...
 </div>
 
 
@@ -1158,18 +1158,18 @@ footer{
 
 <div class="info">
 
-  Gli spot vengono individuati dinamicamente
-  nell'area geografica selezionata.
+  Gli spot vengono selezionati dal database
+  italiano di KiteSpot Finder.
 
   <br><br>
 
   La previsione del vento viene calcolata
-  per ogni spot trovato.
+  per ogni spot tramite Open-Meteo.
 
   <br><br>
 
-  Il pulsante WINDGURU apre la mappa ufficiale
-  Windguru sulle coordinate dello spot.
+  Il pulsante WINDGURU apre Windguru
+  sulle coordinate dello spot.
 
 </div>
 
@@ -1204,6 +1204,26 @@ let gpsLocation = null;
 let currentLocation = null;
 
 
+/*
+   DATABASE LOCALE DEGLI SPOT
+
+   Il file deve essere nella stessa
+   cartella di index.html.
+*/
+
+let spotDatabase = [];
+
+let databaseLoaded = false;
+
+
+/*
+   Nome esatto del file JSON
+*/
+
+const DATABASE_URL =
+  "./kitespot-finder-ITALIA-321-PRONTO.json";
+
+
 /* =========================================================
    ELEMENTI
 ========================================================= */
@@ -1232,6 +1252,164 @@ const resultsBox =
   document.getElementById(
     "results"
   );
+
+
+/* =========================================================
+   CARICAMENTO DATABASE
+========================================================= */
+
+async function loadSpotDatabase(){
+
+  try{
+
+    setStatus(
+      "Caricamento database degli spot...",
+      "warning"
+    );
+
+
+    const response =
+      await fetch(
+        DATABASE_URL +
+        "?v=" +
+        Date.now()
+      );
+
+
+    if(
+      !response.ok
+    ){
+
+      throw new Error(
+        "Impossibile caricare il database degli spot."
+      );
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    /*
+       Supportiamo entrambi i formati:
+
+       [
+         {...},
+         {...}
+       ]
+
+       oppure
+
+       {
+         "spots":[
+           {...},
+           {...}
+         ]
+       }
+    */
+
+    if(
+      Array.isArray(data)
+    ){
+
+      spotDatabase =
+        data;
+
+    }else if(
+      data &&
+      Array.isArray(
+        data.spots
+      )
+    ){
+
+      spotDatabase =
+        data.spots;
+
+    }else{
+
+      throw new Error(
+        "Il formato del database non è corretto."
+      );
+
+    }
+
+
+    /*
+       Teniamo soltanto record
+       con coordinate numeriche.
+
+       Non inventiamo coordinate
+       mancanti.
+    */
+
+    spotDatabase =
+      spotDatabase.filter(
+        spot => {
+
+          const lat =
+            Number(
+              spot.lat
+            );
+
+          const lon =
+            Number(
+              spot.lon
+            );
+
+
+          return (
+            Number.isFinite(lat) &&
+            Number.isFinite(lon) &&
+            lat >= -90 &&
+            lat <= 90 &&
+            lon >= -180 &&
+            lon <= 180
+          );
+
+        }
+      );
+
+
+    databaseLoaded =
+      true;
+
+
+    setStatus(
+      `Database caricato: ${spotDatabase.length} spot con coordinate disponibili.`,
+      "ok"
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Database error:",
+      error
+    );
+
+
+    databaseLoaded =
+      false;
+
+
+    setStatus(
+      error.message ||
+      "Errore nel caricamento del database.",
+      "error"
+    );
+
+  }
+
+}
+
+
+/*
+   Carichiamo il database appena
+   viene aperta l'app.
+*/
+
+loadSpotDatabase();
 
 
 /* =========================================================
@@ -1536,11 +1714,6 @@ async function geocodeItaly(
   }
 
 
-  /*
-     Preferiamo località italiane
-     con maggiore popolazione.
-  */
-
   const results =
     data.results
       .filter(
@@ -1666,113 +1839,21 @@ function distanceKm(
 
 
 /* =========================================================
-   RAGGIO METRI
+   CERCA SPOT NEL DATABASE LOCALE
 ========================================================= */
 
-function getRadiusMeters(){
-
-  if(
-    selectedRadius ===
-    "italy"
-  ){
-
-    /*
-       Italia:
-       utilizziamo un raggio
-       sufficientemente grande
-       dalla posizione scelta.
-    */
-
-    return 1000000;
-
-  }
-
-
-  return (
-    selectedRadius *
-    1000
-  );
-
-}
-
-
-/* =========================================================
-   OVERPASS
-========================================================= */
-
-async function findKiteSpots(
+function findKiteSpots(
   lat,
   lon
 ){
 
-  const radius =
-    getRadiusMeters();
-
-
-  /*
-     Cerchiamo oggetti OSM
-     esplicitamente classificati
-     come kitesurfing.
-
-     nwr = node + way + relation
-  */
-
-  const query = `
-
-[out:json][timeout:60];
-
-(
-  nwr(
-    around:${radius},
-    ${lat},
-    ${lon}
-  )["sport"="kitesurfing"];
-
-  nwr(
-    around:${radius},
-    ${lat},
-    ${lon}
-  )["sport:kitesurfing"="yes"];
-);
-
-out center tags;
-
-`;
-
-
-  const url =
-    "https://overpass-api.de/api/interpreter?data=" +
-    encodeURIComponent(
-      query
-    );
-
-
-  const response =
-    await fetch(
-      url
-    );
-
-
   if(
-    !response.ok
+    !databaseLoaded
   ){
 
     throw new Error(
-      "Il servizio degli spot è momentaneamente occupato. Riprova tra poco."
+      "Il database degli spot non è ancora disponibile."
     );
-
-  }
-
-
-  const data =
-    await response.json();
-
-
-  if(
-    !data.elements
-  ){
-
-    return [];
 
   }
 
@@ -1780,109 +1861,129 @@ out center tags;
   const spots = [];
 
 
-  const used =
-    new Set();
-
-
   for(
-    const element
-    of data.elements
+    const databaseSpot
+    of spotDatabase
   ){
 
-    let spotLat =
-      element.lat;
+    const spotLat =
+      Number(
+        databaseSpot.lat
+      );
 
-    let spotLon =
-      element.lon;
+    const spotLon =
+      Number(
+        databaseSpot.lon
+      );
 
-
-    /*
-       Per way/relation
-       utilizziamo il centro.
-    */
 
     if(
-      (
-        spotLat === undefined ||
-        spotLon === undefined
+      !Number.isFinite(
+        spotLat
+      ) ||
+      !Number.isFinite(
+        spotLon
       )
-      &&
-      element.center
-    ){
-
-      spotLat =
-        element.center.lat;
-
-      spotLon =
-        element.center.lon;
-
-    }
-
-
-    if(
-      spotLat === undefined ||
-      spotLon === undefined
     ){
 
       continue;
 
     }
-
-
-    const name =
-      element.tags &&
-      element.tags.name
-      ? element.tags.name
-      : "Kite spot";
-
-
-    const key =
-      name.toLowerCase() +
-      "_" +
-      Number(spotLat).toFixed(4) +
-      "_" +
-      Number(spotLon).toFixed(4);
-
-
-    if(
-      used.has(key)
-    ){
-
-      continue;
-
-    }
-
-
-    used.add(key);
 
 
     const distance =
       distanceKm(
         lat,
         lon,
-        Number(spotLat),
-        Number(spotLon)
+        spotLat,
+        spotLon
       );
+
+
+    /*
+       Se è stato selezionato
+       ITALIA, non applichiamo
+       il limite del raggio.
+    */
+
+    if(
+      selectedRadius !==
+      "italy" &&
+      distance >
+      Number(
+        selectedRadius
+      )
+    ){
+
+      continue;
+
+    }
 
 
     spots.push({
 
       id:
-        element.id,
+        databaseSpot.id,
 
-      name,
+      rank:
+        databaseSpot.rank,
+
+      name:
+        databaseSpot.name ||
+        "Kite spot",
+
+      country:
+        databaseSpot.country ||
+        "Italia",
+
+      locationQuery:
+        databaseSpot.locationQuery ||
+        "",
 
       lat:
-        Number(spotLat),
+        spotLat,
 
       lon:
-        Number(spotLon),
+        spotLon,
+
+      windguruId:
+        databaseSpot.windguruId,
+
+      windguruUrl:
+        databaseSpot.windguruUrl,
+
+      windfinderUrl:
+        databaseSpot.windfinderUrl,
+
+      googleMapsUrl:
+        databaseSpot.googleMapsUrl,
+
+      status:
+        databaseSpot.status,
+
+      verificationSource:
+        databaseSpot.verificationSource,
 
       distance
 
     });
 
   }
+
+
+  /*
+     Prima mostriamo gli spot
+     più vicini.
+
+     Questo è importante soprattutto
+     quando viene scelto ITALIA.
+  */
+
+  spots.sort(
+    (a,b) =>
+      a.distance -
+      b.distance
+  );
 
 
   return spots;
@@ -2078,10 +2179,6 @@ async function getForecast(
       );
 
 
-    /*
-       Fascia utile per kite
-    */
-
     if(
       hour < 8 ||
       hour > 20
@@ -2194,12 +2291,6 @@ async function getForecast(
 
   }
 
-
-  /*
-     Se nessuna ora raggiunge
-     la soglia non mostriamo
-     lo spot.
-  */
 
   if(
     qualifying.length === 0
@@ -2335,13 +2426,35 @@ function directionName(
 
 
 /* =========================================================
-   WINDGURU MAP
+   WINDGURU
 ========================================================= */
 
 function windguruUrl(
   lat,
-  lon
+  lon,
+  spot = null
 ){
+
+  /*
+     Se nel database abbiamo
+     un URL Windguru specifico
+     dello spot, utilizziamo quello.
+
+     Altrimenti apriamo la mappa
+     sulle coordinate.
+  */
+
+  if(
+    spot &&
+    typeof spot.windguruUrl ===
+    "string" &&
+    spot.windguruUrl.trim() !== ""
+  ){
+
+    return spot.windguruUrl;
+
+  }
+
 
   return (
 
@@ -2370,8 +2483,27 @@ function windguruUrl(
 
 function googleMapsUrl(
   lat,
-  lon
+  lon,
+  spot = null
 ){
+
+  /*
+     Se il database contiene
+     un link Google Maps specifico,
+     lo utilizziamo.
+  */
+
+  if(
+    spot &&
+    typeof spot.googleMapsUrl ===
+    "string" &&
+    spot.googleMapsUrl.trim() !== ""
+  ){
+
+    return spot.googleMapsUrl;
+
+  }
+
 
   return (
 
@@ -2478,6 +2610,20 @@ async function search(){
   }
 
 
+  if(
+    !databaseLoaded
+  ){
+
+    setStatus(
+      "Il database degli spot non è ancora caricato. Attendi qualche secondo e riprova.",
+      "warning"
+    );
+
+    return;
+
+  }
+
+
   searchBtn.disabled =
     true;
 
@@ -2537,41 +2683,20 @@ async function search(){
 
 
     setStatus(
-      "Cerco gli spot kite nel raggio selezionato...",
+      "Cerco gli spot nel database...",
       "warning"
     );
 
 
     /* -----------------------------------------------
-       CERCA SPOT
+       CERCA SPOT NEL DATABASE
     ----------------------------------------------- */
 
     let spots =
-      await findKiteSpots(
+      findKiteSpots(
         location.lat,
         location.lon
       );
-
-
-    /*
-       Sicurezza ulteriore:
-       filtriamo nuovamente
-       il raggio lato browser.
-    */
-
-    if(
-      selectedRadius !==
-      "italy"
-    ){
-
-      spots =
-        spots.filter(
-          spot =>
-            spot.distance <=
-            selectedRadius
-        );
-
-    }
 
 
     if(
@@ -2588,19 +2713,14 @@ async function search(){
 
           <br><br>
 
-          Non significa necessariamente
-          che nella zona non esistano spot.
-
-          <br>
-
-          Significa che il database geografico
-          utilizzato non ne contiene di classificati
-          come kitesurfing in quell'area.
+          Nel database non risultano spot
+          con coordinate disponibili
+          nel raggio selezionato.
 
           <br><br>
 
-          Puoi comunque aprire la mappa Windguru
-          centrata sulla posizione cercata.
+          Puoi comunque aprire Windguru
+          sulla posizione cercata.
 
           <br><br>
 
@@ -2623,7 +2743,7 @@ async function search(){
 
 
       setStatus(
-        "Nessuno spot classificato trovato nel database geografico.",
+        "Nessuno spot con coordinate trovato nel raggio selezionato.",
         "warning"
       );
 
@@ -2651,10 +2771,9 @@ async function search(){
 
 
     /*
-       Non facciamo centinaia
-       di richieste contemporaneamente.
-
-       Blocchi da 5.
+       Richieste a blocchi di 5
+       per non sovraccaricare
+       Open-Meteo.
     */
 
     const batchSize = 5;
@@ -3136,7 +3255,8 @@ function renderResults(
             class="link-btn windguru"
             href="${windguruUrl(
               spot.lat,
-              spot.lon
+              spot.lon,
+              spot
             )}"
             target="_blank"
             rel="noopener noreferrer"
@@ -3149,7 +3269,8 @@ function renderResults(
             class="link-btn"
             href="${googleMapsUrl(
               spot.lat,
-              spot.lon
+              spot.lon,
+              spot
             )}"
             target="_blank"
             rel="noopener noreferrer"
