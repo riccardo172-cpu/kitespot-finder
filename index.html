@@ -543,6 +543,7 @@ button.search:hover{
 
 <script>
 
+
 /* =========================================================
    CONFIGURAZIONE
    ========================================================= */
@@ -646,15 +647,17 @@ async function loadSpotDatabase(){
 
 
     spotDatabase =
-      spotDatabase.map(spot => ({
+      spotDatabase.map(
+        spot => ({
 
-        ...spot,
+          ...spot,
 
-        lat:Number(spot.lat),
+          lat:Number(spot.lat),
 
-        lon:Number(spot.lon)
+          lon:Number(spot.lon)
 
-      }));
+        })
+      );
 
 
     databaseLoaded = true;
@@ -776,7 +779,11 @@ function selectDay(day){
     );
 
   if(button){
-    button.classList.add("active");
+
+    button.classList.add(
+      "active"
+    );
+
   }
 
 }
@@ -801,27 +808,38 @@ function selectRadius(radius){
 
 
   if(radius === 100){
+
     document
       .getElementById("radius100")
       .classList.add("active");
+
   }
 
+
   if(radius === 200){
+
     document
       .getElementById("radius200")
       .classList.add("active");
+
   }
 
+
   if(radius === 500){
+
     document
       .getElementById("radius500")
       .classList.add("active");
+
   }
 
+
   if(radius === 99999){
+
     document
       .getElementById("radiusItalia")
       .classList.add("active");
+
   }
 
 }
@@ -954,7 +972,8 @@ async function geocodeItaly(query){
   if(!response.ok){
 
     throw new Error(
-      "Errore geocoding"
+      "Errore geocoding HTTP " +
+      response.status
     );
 
   }
@@ -1097,7 +1116,9 @@ function findKiteSpots(
     );
 
 
-  if(selectedRadius !== 99999){
+  if(
+    selectedRadius !== 99999
+  ){
 
     spots =
       spots.filter(
@@ -1134,14 +1155,28 @@ async function getForecast(spot){
     dateISO(date);
 
 
+  /*
+    IMPORTANTE:
+
+    Qui chiediamo direttamente a Open-Meteo
+    solamente il giorno che ci interessa.
+
+    Questo evita di scaricare inutilmente
+    tutti i 16 giorni.
+  */
+
   const url =
     "https://api.open-meteo.com/v1/forecast" +
 
     "?latitude=" +
-    encodeURIComponent(spot.lat) +
+    encodeURIComponent(
+      spot.lat
+    ) +
 
     "&longitude=" +
-    encodeURIComponent(spot.lon) +
+    encodeURIComponent(
+      spot.lon
+    ) +
 
     "&hourly=" +
     "wind_speed_10m," +
@@ -1152,7 +1187,11 @@ async function getForecast(spot){
 
     "&timezone=auto" +
 
-    "&forecast_days=16";
+    "&start_date=" +
+    encodeURIComponent(day) +
+
+    "&end_date=" +
+    encodeURIComponent(day);
 
 
   try{
@@ -1161,15 +1200,38 @@ async function getForecast(spot){
       await fetch(url);
 
 
+    /*
+      Se Open-Meteo risponde con un errore,
+      lanciamo l'errore invece di nasconderlo.
+    */
+
     if(!response.ok){
 
-      console.error(
-        "Open-Meteo HTTP error:",
-        response.status,
-        spot.name
-      );
+      let errorText = "";
 
-      return null;
+      try{
+
+        errorText =
+          await response.text();
+
+      }catch(e){
+
+        errorText =
+          "";
+
+      }
+
+
+      throw new Error(
+        "Open-Meteo HTTP " +
+        response.status +
+        " - " +
+        (
+          errorText
+            ? errorText.substring(0,150)
+            : "nessun dettaglio"
+        )
+      );
 
     }
 
@@ -1185,13 +1247,9 @@ async function getForecast(spot){
       )
     ){
 
-      console.error(
-        "Risposta Open-Meteo non valida:",
-        spot.name,
-        data
+      throw new Error(
+        "Risposta Open-Meteo senza dati orari"
       );
-
-      return null;
 
     }
 
@@ -1209,6 +1267,11 @@ async function getForecast(spot){
         data.hourly.time[i];
 
 
+      /*
+        Controlliamo comunque che il giorno
+        restituito sia quello richiesto.
+      */
+
       if(
         !time.startsWith(day)
       ){
@@ -1223,6 +1286,11 @@ async function getForecast(spot){
           time.substring(11,13)
         );
 
+
+      /*
+        Finestra utile per il kite:
+        dalle 08:00 alle 20:00 comprese.
+      */
 
       if(
         hour < 8 ||
@@ -1285,18 +1353,22 @@ async function getForecast(spot){
     }
 
 
-    if(hours.length === 0){
+    if(
+      hours.length === 0
+    ){
 
-      console.warn(
-        "Nessun dato orario per:",
-        spot.name,
+      throw new Error(
+        "Nessun dato orario disponibile per " +
         day
       );
 
-      return null;
-
     }
 
+
+    /*
+      Selezioniamo le ore che raggiungono
+      la soglia impostata.
+    */
 
     const qualifying =
       hours.filter(
@@ -1304,6 +1376,10 @@ async function getForecast(spot){
           h.wind >= selectedWind
       );
 
+
+    /*
+      Troviamo il vento massimo.
+    */
 
     let maxWindHour =
       hours[0];
@@ -1339,6 +1415,11 @@ async function getForecast(spot){
     }
 
 
+    /*
+      Nessuna ora sopra la soglia:
+      lo spot viene escluso.
+    */
+
     if(
       qualifying.length === 0
     ){
@@ -1347,6 +1428,10 @@ async function getForecast(spot){
 
     }
 
+
+    /*
+      Creiamo gli intervalli consecutivi.
+    */
 
     const intervals = [];
 
@@ -1409,7 +1494,8 @@ async function getForecast(spot){
 
     return {
 
-      date:date,
+      date:
+        date,
 
       dateLabel:
         formatDate(date),
@@ -1431,16 +1517,21 @@ async function getForecast(spot){
 
     };
 
-
   }catch(error){
 
+    /*
+      NON nascondiamo più l'errore.
+      Lo rimandiamo alla funzione di ricerca.
+    */
+
     console.error(
-      "Errore Open-Meteo:",
-      spot.name,
+      "Errore previsione per " +
+      spot.name +
+      ":",
       error
     );
 
-    return null;
+    throw error;
 
   }
 
@@ -1451,24 +1542,19 @@ async function getForecast(spot){
    DIREZIONE VENTO
    ========================================================= */
 
-function directionName(degrees){
+function directionName(
+  degrees
+){
 
   const directions = [
 
     "N",
-
     "NE",
-
     "E",
-
     "SE",
-
     "S",
-
     "SW",
-
     "W",
-
     "NW"
 
   ];
@@ -1489,24 +1575,19 @@ function directionName(degrees){
    FRECCIA DIREZIONE
    ========================================================= */
 
-function directionArrow(degrees){
+function directionArrow(
+  degrees
+){
 
   const arrows = [
 
     "↑",
-
     "↗",
-
     "→",
-
     "↘",
-
     "↓",
-
     "↙",
-
     "←",
-
     "↖"
 
   ];
@@ -1527,7 +1608,9 @@ function directionArrow(degrees){
    WINDGURU
    ========================================================= */
 
-function getWindguruUrl(spot){
+function getWindguruUrl(
+  spot
+){
 
   if(
     spot.windguruUrl
@@ -1559,7 +1642,9 @@ function getWindguruUrl(spot){
    GOOGLE MAPS
    ========================================================= */
 
-function getGoogleMapsUrl(spot){
+function getGoogleMapsUrl(
+  spot
+){
 
   if(
     spot.googleMapsUrl
@@ -1587,7 +1672,9 @@ function getGoogleMapsUrl(spot){
    RENDER CARD
    ========================================================= */
 
-function renderCard(spot){
+function renderCard(
+  spot
+){
 
   const forecast =
     spot.forecast;
@@ -1611,7 +1698,9 @@ function renderCard(spot){
 
             return `
               <span class="interval">
-                ${String(interval.start).padStart(2,"0")}:00
+                ${String(
+                  interval.start
+                ).padStart(2,"0")}:00
               </span>
             `;
 
@@ -1620,8 +1709,12 @@ function renderCard(spot){
 
           return `
             <span class="interval">
-              ${String(interval.start).padStart(2,"0")}:00 -
-              ${String(interval.end).padStart(2,"0")}:00
+              ${String(
+                interval.start
+              ).padStart(2,"0")}:00 -
+              ${String(
+                interval.end
+              ).padStart(2,"0")}:00
             </span>
           `;
 
@@ -1683,7 +1776,9 @@ function renderCard(spot){
             <div
               class="arrow"
               style="
-                transform:rotate(${direction}deg)
+                transform:rotate(
+                  ${direction}deg
+                )
               "
             >
               ↑
@@ -1778,8 +1873,13 @@ function renderCard(spot){
 
       <div class="coordinates">
 
-        ${Number(spot.lat).toFixed(5)},
-        ${Number(spot.lon).toFixed(5)}
+        ${Number(
+          spot.lat
+        ).toFixed(5)},
+
+        ${Number(
+          spot.lon
+        ).toFixed(5)}
 
       </div>
 
@@ -1815,14 +1915,36 @@ function renderCard(spot){
    SICUREZZA HTML
    ========================================================= */
 
-function escapeHTML(value){
+function escapeHTML(
+  value
+){
 
   return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+
+    .replaceAll(
+      "&",
+      "&amp;"
+    )
+
+    .replaceAll(
+      "<",
+      "&lt;"
+    )
+
+    .replaceAll(
+      ">",
+      "&gt;"
+    )
+
+    .replaceAll(
+      '"',
+      "&quot;"
+    )
+
+    .replaceAll(
+      "'",
+      "&#039;"
+    );
 
 }
 
@@ -1833,7 +1955,9 @@ function escapeHTML(value){
 
 async function searchSpots(){
 
-  if(!databaseLoaded){
+  if(
+    !databaseLoaded
+  ){
 
     statusElement.textContent =
       "Il database non è ancora caricato.";
@@ -1843,10 +1967,14 @@ async function searchSpots(){
   }
 
 
-  resultsElement.innerHTML = "";
+  resultsElement.innerHTML =
+    "";
+
 
   statusElement.innerHTML =
-    '<span class="loading">Ricerca degli spot...</span>';
+    '<span class="loading">' +
+    'Ricerca degli spot...' +
+    '</span>';
 
 
   try{
@@ -1895,7 +2023,9 @@ async function searchSpots(){
         );
 
 
-      if(!location){
+      if(
+        !location
+      ){
 
         statusElement.textContent =
           "Località non trovata.";
@@ -1929,7 +2059,9 @@ async function searchSpots(){
       );
 
 
-    if(spots.length === 0){
+    if(
+      spots.length === 0
+    ){
 
       statusElement.textContent =
         "Nessuno spot trovato nel raggio selezionato.";
@@ -1951,10 +2083,17 @@ async function searchSpots(){
 
     const forecastResults = [];
 
+    let forecastOK = 0;
+
+    let forecastNoWind = 0;
+
+    let forecastErrors = 0;
+
+    let firstError = "";
+
 
     /*
-      Facciamo massimo 5 richieste contemporaneamente.
-      Questo evita di sovraccaricare il browser/API.
+      Massimo 5 richieste contemporaneamente.
     */
 
     const batchSize = 5;
@@ -1987,11 +2126,18 @@ async function searchSpots(){
                   );
 
 
-                if(!forecast){
+                if(
+                  !forecast
+                ){
+
+                  forecastNoWind++;
 
                   return null;
 
                 }
+
+
+                forecastOK++;
 
 
                 return {
@@ -1999,18 +2145,32 @@ async function searchSpots(){
                   ...spot,
 
                   forecast:
-
                     forecast
 
                 };
 
               }catch(error){
 
+                forecastErrors++;
+
+
+                if(
+                  !firstError
+                ){
+
+                  firstError =
+                    error.message ||
+                    "Errore sconosciuto";
+
+                }
+
+
                 console.error(
                   "Forecast error:",
                   spot.name,
                   error
                 );
+
 
                 return null;
 
@@ -2107,17 +2267,51 @@ async function searchSpots(){
 
 
     /* ---------------------------------------------
-       RISULTATI
+       NESSUN RISULTATO
        --------------------------------------------- */
 
     if(
       forecastResults.length === 0
     ){
 
-      statusElement.textContent =
-        "0 spot raggiungono almeno " +
-        selectedWind +
-        " nodi.";
+      if(
+        forecastErrors > 0
+      ){
+
+        statusElement.innerHTML =
+          '<span class="error">' +
+
+          "Errore nelle previsioni. " +
+
+          "Spot controllati: " +
+          spots.length +
+
+          " · Risposte OK: " +
+          forecastOK +
+
+          " · Senza vento sufficiente: " +
+          forecastNoWind +
+
+          " · Errori: " +
+          forecastErrors +
+
+          "<br><br>" +
+
+          "Primo errore: " +
+          escapeHTML(
+            firstError
+          ) +
+
+          "</span>";
+
+      }else{
+
+        statusElement.textContent =
+          "0 spot raggiungono almeno " +
+          selectedWind +
+          " nodi.";
+
+      }
 
 
       resultsElement.innerHTML = `
@@ -2125,7 +2319,10 @@ async function searchSpots(){
         <div class="panel empty">
 
           Nessuno degli spot trovati ha una previsione
-          di almeno <strong>${selectedWind} kt</strong>
+          di almeno
+          <strong>
+            ${selectedWind} kt
+          </strong>
           tra le 08:00 e le 20:00.
 
         </div>
@@ -2136,6 +2333,10 @@ async function searchSpots(){
 
     }
 
+
+    /* ---------------------------------------------
+       RISULTATI
+       --------------------------------------------- */
 
     statusElement.textContent =
       forecastResults.length +
@@ -2162,10 +2363,13 @@ async function searchSpots(){
 
     statusElement.innerHTML =
       '<span class="error">' +
+
       "Errore durante la ricerca: " +
+
       escapeHTML(
         error.message
       ) +
+
       "</span>";
 
   }
