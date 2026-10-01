@@ -8,465 +8,414 @@
 
 <style>
 
-:root{
-    --bg:#071522;
-    --bg2:#123b56;
-    --dark:#040d14;
-    --panel:rgba(17,42,57,.88);
-    --panel2:rgba(10,30,43,.82);
-    --border:rgba(93,166,199,.25);
-    --blue:#7fb9d5;
-    --light:#75b9d8;
-    --cyan:#55d6ff;
-    --muted:#8ca5b5;
-    --green:#68d391;
-}
-
 *{
     box-sizing:border-box;
 }
 
-body{
+html,body{
     margin:0;
-    min-height:100vh;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-    color:white;
+    padding:0;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            var(--bg2) 0%,
-            var(--bg) 34%,
-            var(--dark) 78%
-        );
-    background-attachment:fixed;
+        radial-gradient(circle at top,#123b56 0%,#071522 42%,#040d14 100%);
+    color:#fff;
+}
+
+body{
+    min-height:100vh;
 }
 
 .app{
     width:100%;
-    max-width:520px;
-    min-height:100vh;
-    margin:auto;
-    padding:22px 18px 25px;
+    max-width:560px;
+    margin:0 auto;
+    padding:22px 16px 30px;
 }
 
 header{
     text-align:center;
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
-.header-small{
+.kicker{
+    color:#75b9d8;
     font-size:11px;
-    font-weight:700;
+    font-weight:bold;
     letter-spacing:3px;
-    color:var(--light);
-    margin-bottom:5px;
+    text-transform:uppercase;
+    margin-bottom:7px;
 }
 
 h1{
     margin:0;
-    font-size:26px;
+    font-size:28px;
     letter-spacing:1.5px;
 }
 
-.header-subtitle{
-    margin-top:6px;
+.subtitle{
+    margin-top:7px;
+    color:#8ca5b5;
     font-size:13px;
-    color:var(--muted);
-}
-
-.section-title{
-    margin:0 0 9px 4px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:2px;
-    color:var(--blue);
 }
 
 .panel{
-    background:var(--panel);
-    border:1px solid var(--border);
-    border-radius:18px;
-    box-shadow:0 8px 25px rgba(0,0,0,.18);
-    padding:15px;
-    margin-bottom:15px;
+    background:rgba(10,30,43,.82);
+    border:1px solid rgba(93,166,199,.24);
+    border-radius:20px;
+    padding:17px;
+    margin-bottom:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.22);
 }
 
-.position-tabs{
+.section-title{
+    color:#7fb9d5;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+}
+
+.location-tabs{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
     margin-bottom:12px;
 }
 
-.tab-button,
-.option-button,
-.gps-button,
-.search-location{
-    border:1px solid var(--border);
-    background:rgba(7,21,34,.65);
-    color:var(--blue);
+.tab{
+    border:1px solid rgba(93,166,199,.28);
+    background:rgba(17,42,57,.75);
+    color:#9fb6c4;
     border-radius:12px;
+    padding:11px 8px;
+    font-size:12px;
+    font-weight:bold;
     cursor:pointer;
 }
 
-.tab-button{
-    padding:11px 7px;
-    font-size:11px;
-    font-weight:700;
-    letter-spacing:1px;
+.tab.active{
+    background:rgba(50,119,151,.35);
+    border-color:#55d6ff;
+    color:#fff;
 }
 
-.tab-button.active,
-.option-button.active{
-    background:rgba(85,214,255,.12);
-    border-color:rgba(85,214,255,.55);
-    color:var(--cyan);
-}
-
-.position-content{
+.location-box{
     display:none;
 }
 
-.position-content.active{
+.location-box.active{
     display:block;
 }
 
-.gps-button{
+input,
+select{
     width:100%;
-    padding:13px;
-    color:white;
-    font-size:13px;
-    font-weight:600;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(85,214,255,.12),
-            rgba(17,42,57,.8)
-        );
-}
-
-.location-row{
-    display:flex;
-    gap:8px;
-}
-
-.location-input{
-    flex:1;
-    min-width:0;
-    padding:12px;
+    border:1px solid rgba(93,166,199,.28);
+    background:#0c2635;
+    color:#fff;
     border-radius:12px;
-    border:1px solid var(--border);
-    background:rgba(4,13,20,.65);
-    color:white;
-    outline:none;
+    padding:12px;
     font-size:14px;
+    outline:none;
 }
 
-.location-input::placeholder{
-    color:#668091;
+input:focus,
+select:focus{
+    border-color:#55d6ff;
 }
 
-.search-location{
-    padding:0 14px;
-    color:var(--cyan);
-    font-weight:700;
+.hint{
+    color:#718b9a;
+    font-size:11px;
+    line-height:1.45;
+    margin-top:7px;
 }
 
-.selected-location{
-    margin-top:10px;
-    font-size:12px;
-    color:var(--muted);
-    line-height:1.5;
-}
-
-.selected-location strong{
-    color:white;
-}
-
-.option-grid{
+.date-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:7px;
 }
 
-.option-button{
-    padding:10px 4px;
+.date-btn{
+    border:1px solid rgba(93,166,199,.25);
+    background:rgba(17,42,57,.8);
+    color:#9fb6c4;
+    border-radius:11px;
+    padding:11px 4px;
     font-size:11px;
-    font-weight:700;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.main-search{
+.date-btn.active{
+    background:rgba(50,119,151,.4);
+    color:#fff;
+    border-color:#55d6ff;
+}
+
+.controls-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.control label{
+    display:block;
+    color:#7fb9d5;
+    font-size:10px;
+    font-weight:bold;
+    letter-spacing:1.2px;
+    text-transform:uppercase;
+    margin-bottom:6px;
+}
+
+.search-btn{
     width:100%;
-    margin:2px 0 21px;
-    padding:16px;
-    border:1px solid rgba(85,214,255,.45);
-    border-radius:16px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(85,214,255,.20),
-            rgba(17,42,57,.95)
-        );
-    color:white;
+    border:0;
+    border-radius:15px;
+    padding:15px;
+    margin-top:4px;
+    background:linear-gradient(135deg,#55d6ff,#3288ad);
+    color:#04131c;
     font-size:14px;
-    font-weight:800;
-    letter-spacing:1.5px;
+    font-weight:bold;
+    letter-spacing:.5px;
     cursor:pointer;
+    box-shadow:0 8px 25px rgba(85,214,255,.2);
+}
+
+.search-btn:active{
+    transform:scale(.99);
 }
 
 .status{
     text-align:center;
-    font-size:11px;
-    color:var(--muted);
-    margin:3px 0 15px;
-}
-
-.status.success{
-    color:var(--green);
-}
-
-.status.error{
-    color:#f08080;
+    color:#8ca5b5;
+    font-size:12px;
+    margin:14px 0;
+    min-height:18px;
 }
 
 .results-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:10px;
+    margin:18px 2px 10px;
+}
+
+.results-title{
+    color:#7fb9d5;
+    font-size:11px;
+    font-weight:bold;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
 .results-count{
+    color:#8ca5b5;
     font-size:11px;
-    color:var(--muted);
 }
 
-.spot-card{
-    background:var(--panel2);
-    border:1px solid var(--border);
+.card{
+    background:rgba(17,42,57,.9);
+    border:1px solid rgba(93,166,199,.25);
     border-radius:20px;
-    padding:15px;
-    margin-bottom:13px;
-    box-shadow:0 8px 25px rgba(0,0,0,.20);
+    padding:16px;
+    margin-bottom:12px;
+    box-shadow:0 10px 28px rgba(0,0,0,.2);
+}
+
+.card-head{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:flex-start;
 }
 
 .spot-name{
-    font-size:19px;
-    font-weight:700;
-    margin-bottom:3px;
-}
-
-.spot-country{
-    font-size:12px;
-    color:var(--muted);
-    margin-bottom:13px;
-}
-
-.wind-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:7px;
-    margin-bottom:12px;
-}
-
-.wind-box{
-    background:rgba(17,42,57,.88);
-    border:1px solid rgba(93,166,199,.22);
-    border-radius:13px;
-    padding:10px 5px;
-    text-align:center;
-}
-
-.wind-label{
-    font-size:9px;
-    letter-spacing:1px;
-    color:var(--blue);
-    margin-bottom:4px;
-}
-
-.wind-value{
     font-size:18px;
-    font-weight:700;
+    font-weight:bold;
+}
+
+.spot-region{
+    color:#7f9aaa;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.wind-main{
+    text-align:right;
+    white-space:nowrap;
+}
+
+.wind-number{
+    color:#55d6ff;
+    font-size:28px;
+    font-weight:bold;
+    line-height:1;
 }
 
 .wind-unit{
-    font-size:9px;
-    color:var(--muted);
+    color:#8ca5b5;
+    font-size:10px;
 }
 
-.spot-info{
+.metrics{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    margin-top:15px;
+}
+
+.metric{
+    background:rgba(7,21,31,.55);
+    border-radius:12px;
+    padding:9px 5px;
+    text-align:center;
+}
+
+.metric-label{
+    color:#708a99;
+    font-size:9px;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+}
+
+.metric-value{
+    margin-top:4px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.direction-box{
     display:flex;
     align-items:center;
-    gap:14px;
-    margin:12px 0;
+    gap:12px;
+    margin-top:14px;
+    padding:10px;
+    border-radius:13px;
+    background:rgba(7,21,31,.45);
 }
 
-.compass{
+.mini-compass{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    border:1px solid rgba(85,214,255,.35);
     position:relative;
-    flex:0 0 82px;
-    width:82px;
-    height:82px;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(25,71,94,.95),
-            rgba(6,20,29,.98)
-        );
-    border:1px solid rgba(93,166,199,.30);
-    box-shadow:
-        inset 0 0 0 6px rgba(7,21,34,.35);
+    background:radial-gradient(circle,#123b56,#071522);
 }
 
-.compass:before{
-    content:"";
+.compass-arrow{
     position:absolute;
-    inset:8px;
-    border-radius:50%;
-    border:1px solid rgba(93,166,199,.20);
-}
-
-.compass span{
-    position:absolute;
-    font-size:8px;
-    color:var(--blue);
-    font-weight:700;
-}
-
-.n{
-    top:5px;
     left:50%;
-    transform:translateX(-50%);
-}
-
-.e{
-    right:6px;
     top:50%;
-    transform:translateY(-50%);
-}
-
-.s{
-    bottom:5px;
-    left:50%;
-    transform:translateX(-50%);
-}
-
-.o{
-    left:6px;
-    top:50%;
-    transform:translateY(-50%);
-}
-
-.arrow{
-    position:absolute;
     width:3px;
-    height:29px;
-    left:50%;
-    top:50%;
+    height:19px;
+    background:#55d6ff;
     transform-origin:50% 100%;
-    background:var(--cyan);
-    border-radius:4px;
-    box-shadow:0 0 8px rgba(85,214,255,.7);
+    border-radius:3px;
 }
 
-.arrow:before{
+.compass-arrow:before{
     content:"";
     position:absolute;
-    top:-7px;
-    left:50%;
-    transform:translateX(-50%);
+    top:-5px;
+    left:-4px;
     border-left:5px solid transparent;
     border-right:5px solid transparent;
-    border-bottom:10px solid var(--cyan);
+    border-bottom:9px solid #55d6ff;
 }
 
-.center{
-    position:absolute;
-    width:9px;
-    height:9px;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    border-radius:50%;
-    background:var(--cyan);
-    box-shadow:0 0 10px rgba(85,214,255,.8);
+.direction-text{
+    font-size:13px;
+    font-weight:bold;
 }
 
-.details{
-    flex:1;
-}
-
-.direction{
-    font-size:16px;
-    font-weight:700;
-    margin-bottom:4px;
-}
-
-.degrees{
-    font-size:12px;
-    color:var(--muted);
-    margin-bottom:8px;
+.direction-deg{
+    color:#7f9aaa;
+    font-size:11px;
+    margin-top:2px;
 }
 
 .coordinates{
+    margin-top:12px;
+    color:#718b9a;
     font-size:10px;
-    color:var(--blue);
 }
 
-.actions{
+.card-actions{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:8px;
-    margin-top:12px;
+    margin-top:13px;
 }
 
 .action{
-    text-decoration:none;
+    display:block;
     text-align:center;
-    border:1px solid var(--border);
-    background:rgba(7,21,34,.60);
-    color:var(--blue);
+    text-decoration:none;
+    border:1px solid rgba(93,166,199,.3);
+    background:rgba(7,21,31,.55);
+    color:#8edbfa;
     border-radius:11px;
     padding:10px 6px;
     font-size:11px;
-    font-weight:700;
+    font-weight:bold;
 }
 
 .action.windguru{
-    color:var(--cyan);
-    border-color:rgba(85,214,255,.35);
+    border-color:rgba(85,214,255,.5);
 }
 
-.demo{
-    padding:11px 13px;
-    border-radius:12px;
-    background:rgba(246,173,85,.07);
-    border:1px solid rgba(246,173,85,.20);
-    color:#bda27f;
+.no-results{
+    text-align:center;
+    padding:25px 15px;
+    color:#8ca5b5;
+    font-size:13px;
+}
+
+.error{
+    color:#ff9b9b;
+}
+
+.success{
+    color:#8be0b2;
+}
+
+.loading{
+    color:#75b9d8;
+}
+
+.footer{
+    text-align:center;
+    color:#516b79;
     font-size:10px;
     line-height:1.5;
-}
-
-.hidden{
-    display:none;
-}
-
-footer{
-    text-align:center;
     margin-top:20px;
-    color:#607786;
-    font-size:10px;
 }
 
-@media(max-width:360px){
+@media(max-width:380px){
 
     .app{
-        padding-left:14px;
-        padding-right:14px;
+        padding-left:12px;
+        padding-right:12px;
     }
 
-    .option-grid{
+    h1{
+        font-size:25px;
+    }
+
+    .date-grid{
         grid-template-columns:repeat(2,1fr);
+    }
+
+    .metrics{
+        grid-template-columns:1fr 1fr 1fr;
     }
 
 }
@@ -479,144 +428,104 @@ footer{
 <div class="app">
 
 <header>
-
-    <div class="header-small">
-        KITESPOT FINDER
+    <div class="kicker">KITESURFING</div>
+    <h1>KiteSpot Finder</h1>
+    <div class="subtitle">
+        Trova dove fare kite in base alla posizione e al vento
     </div>
-
-    <h1>
-        DOVE FARE KITE
-    </h1>
-
-    <div class="header-subtitle">
-        Trova lo spot in base a posizione e vento
-    </div>
-
 </header>
 
 
 <!-- POSIZIONE -->
 
-<div class="section-title">
-    POSIZIONE DI RICERCA
-</div>
-
 <div class="panel">
 
-    <div class="position-tabs">
+    <div class="section-title">Posizione di ricerca</div>
+
+    <div class="location-tabs">
 
         <button
-            class="tab-button active"
-            id="tabCurrent"
-            onclick="showPosition('current')">
-
-            📍 POSIZIONE ATTUALE
-
+            class="tab active"
+            id="tabGps"
+            onclick="selectLocationMode('gps')">
+            POSIZIONE ATTUALE
         </button>
 
         <button
-            class="tab-button"
+            class="tab"
             id="tabCustom"
-            onclick="showPosition('custom')">
-
-            📌 SCEGLI POSIZIONE
-
+            onclick="selectLocationMode('custom')">
+            SCEGLI POSIZIONE
         </button>
 
     </div>
 
 
     <div
-        id="currentPosition"
-        class="position-content active">
+        id="gpsBox"
+        class="location-box active">
 
-        <button
-            class="gps-button"
-            onclick="getCurrentPosition()">
-
-            📍 USA LA MIA POSIZIONE ATTUALE
-
-        </button>
-
-    </div>
-
-
-    <div
-        id="customPosition"
-        class="position-content">
-
-        <div class="location-row">
-
-            <input
-                id="locationInput"
-                class="location-input"
-                placeholder="Es. Chioggia, El Gouna, Tenerife">
-
-            <button
-                class="search-location"
-                onclick="searchLocation()">
-
-                CERCA
-
-            </button>
-
+        <div class="hint">
+            Il telefono/browser proverà a utilizzare la posizione GPS
+            attuale.
         </div>
 
     </div>
 
 
     <div
-        id="selectedLocation"
-        class="selected-location">
+        id="customBox"
+        class="location-box">
 
-        Posizione:
-        <strong>nessuna posizione selezionata</strong>
+        <input
+            id="locationInput"
+            type="text"
+            placeholder="Es. El Gouna, Egitto">
+
+        <div class="hint">
+            Puoi cercare una località diversa da quella in cui ti trovi.
+            Utile per programmare una vacanza.
+        </div>
 
     </div>
 
 </div>
 
 
-<!-- GIORNO -->
-
-<div class="section-title">
-    GIORNO DEL VENTO
-</div>
+<!-- DATA -->
 
 <div class="panel">
 
-    <div class="option-grid">
+    <div class="section-title">Giorno della ricerca</div>
+
+    <div class="date-grid">
 
         <button
-            class="option-button active"
-            onclick="selectOption(this,'date',0)">
-
+            class="date-btn active"
+            data-day="0"
+            onclick="selectDay(0)">
             OGGI
-
         </button>
 
         <button
-            class="option-button"
-            onclick="selectOption(this,'date',1)">
-
+            class="date-btn"
+            data-day="1"
+            onclick="selectDay(1)">
             DOMANI
-
         </button>
 
         <button
-            class="option-button"
-            onclick="selectOption(this,'date',2)">
-
+            class="date-btn"
+            data-day="2"
+            onclick="selectDay(2)">
             +2 GIORNI
-
         </button>
 
         <button
-            class="option-button"
-            onclick="selectOption(this,'date',7)">
-
+            class="date-btn"
+            data-day="7"
+            onclick="selectDay(7)">
             +7 GIORNI
-
         </button>
 
     </div>
@@ -624,165 +533,89 @@ footer{
 </div>
 
 
-<!-- RAGGIO -->
-
-<div class="section-title">
-    RAGGIO DI RICERCA
-</div>
+<!-- FILTRI -->
 
 <div class="panel">
 
-    <div class="option-grid">
+    <div class="section-title">Filtri</div>
 
-        <button
-            class="option-button active"
-            onclick="selectOption(this,'radius',100)">
+    <div class="controls-grid">
 
-            100 KM
+        <div class="control">
 
-        </button>
+            <label>Raggio</label>
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'radius',200)">
+            <select id="radius">
 
-            200 KM
+                <option value="100">100 KM</option>
+                <option value="200" selected>200 KM</option>
+                <option value="500">500 KM</option>
+                <option value="italy">ITALIA</option>
 
-        </button>
+            </select>
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'radius',500)">
-
-            500 KM
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'radius',99999)">
-
-            ITALIA
-
-        </button>
-
-    </div>
-
-</div>
+        </div>
 
 
-<!-- VENTO MINIMO -->
+        <div class="control">
 
-<div class="section-title">
-    VENTO MINIMO
-</div>
+            <label>Vento minimo</label>
 
-<div class="panel">
+            <select id="windMin">
 
-    <div class="option-grid">
+                <option value="8">8 KT</option>
+                <option value="10">10 KT</option>
+                <option value="12" selected>12 KT</option>
+                <option value="14">14 KT</option>
+                <option value="16">16 KT</option>
+                <option value="18">18 KT</option>
+                <option value="20">20 KT</option>
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',8)">
+            </select>
 
-            8 KT
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',10)">
-
-            10 KT
-
-        </button>
-
-        <button
-            class="option-button active"
-            onclick="selectOption(this,'wind',12)">
-
-            12 KT
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',14)">
-
-            14 KT
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',16)">
-
-            16 KT
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',18)">
-
-            18 KT
-
-        </button>
-
-        <button
-            class="option-button"
-            onclick="selectOption(this,'wind',20)">
-
-            20 KT
-
-        </button>
-
-    </div>
-
-</div>
+        </div>
 
 
-<!-- ORDINA -->
+        <div class="control">
 
-<div class="section-title">
-    ORDINA RISULTATI
-</div>
+            <label>Ordina per</label>
 
-<div class="panel">
+            <select id="sortBy">
 
-    <div class="option-grid">
+                <option value="distance">
+                    DISTANZA
+                </option>
 
-        <button
-            class="option-button active"
-            onclick="selectOption(this,'sort','distance')">
+                <option value="wind">
+                    VENTO
+                </option>
 
-            DISTANZA
+                <option value="gust">
+                    RAFFICHE
+                </option>
 
-        </button>
+                <option value="direction">
+                    DIREZIONE
+                </option>
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'sort','wind')">
+            </select>
 
-            VENTO
+        </div>
 
-        </button>
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'sort','gust')">
+        <div class="control">
 
-            RAFFICHE
+            <label>Previsione</label>
 
-        </button>
+            <select id="period">
 
-        <button
-            class="option-button"
-            onclick="selectOption(this,'sort','direction')">
+                <option value="day">
+                    GIORNATA
+                </option>
 
-            DIREZIONE
+            </select>
 
-        </button>
+        </div>
 
     </div>
 
@@ -790,61 +623,32 @@ footer{
 
 
 <button
-    class="main-search"
-    onclick="findSpots()">
+    class="search-btn"
+    onclick="searchSpots()">
 
-    🔎 CERCA GLI SPOT
+    CERCA GLI SPOT
 
 </button>
 
 
-<div id="status" class="status"></div>
-
-
-<!-- RISULTATI -->
-
-<div id="results" class="hidden">
-
-    <div class="results-header">
-
-        <div
-            class="section-title"
-            style="margin:0">
-
-            SPOT TROVATI
-
-        </div>
-
-        <div
-            id="resultsCount"
-            class="results-count">
-
-            0 spot
-
-        </div>
-
-    </div>
-
-
-    <div id="spotList"></div>
-
-
-    <div class="demo">
-
-        ℹ️ I dati del vento visualizzati sono ancora
-        dimostrativi. La struttura è già pronta per il
-        collegamento ai dati reali.
-
-    </div>
-
+<div
+    id="status"
+    class="status">
 </div>
 
 
-<footer>
+<div
+    id="results">
+</div>
 
-    KITESPOT FINDER · VERSIONE BETA
 
-</footer>
+<div class="footer">
+
+    Previsioni meteorologiche reali tramite Open-Meteo.<br>
+    I collegamenti Windguru aprono la previsione dettagliata dello spot.<br>
+    Le condizioni reali possono differire dalla previsione.
+
+</div>
 
 </div>
 
@@ -852,811 +656,314 @@ footer{
 <script>
 
 /* =========================================================
-   STATO
+   KITESPOT FINDER
+   DATABASE SPOT
    ========================================================= */
 
-let searchPosition = null;
-
-let selectedDate = 0;
-
-let selectedRadius = 100;
-
-let selectedWindMin = 12;
-
-let selectedSort = "distance";
-
-
-/* =========================================================
-   DATABASE SPOT DI TEST
-   ========================================================= */
-
-const spots = [
+const SPOTS = [
 
     {
         name:"Sottomarina",
-        country:"Chioggia · Veneto",
+        region:"Veneto",
+        country:"Italia",
         lat:45.1959,
         lon:12.3042,
-        wind:16,
-        gust:22,
-        direction:60,
-        directionName:"Grecale",
         windguru:"https://www.windguru.cz/49147"
     },
 
     {
         name:"Diga Sud Chioggia",
-        country:"Sottomarina · Veneto",
-        lat:45.1970,
-        lon:12.3020,
-        wind:18,
-        gust:25,
-        direction:70,
-        directionName:"Grecale",
-        windguru:"https://www.windguru.cz/1178374"
+        region:"Veneto",
+        country:"Italia",
+        lat:45.22855,
+        lon:12.31277,
+        windguru:"https://old.windguru.cz/int/index.php?sc=1176825"
     },
 
     {
-        name:"Caorle",
-        country:"Veneto",
-        lat:45.61,
-        lon:12.90,
-        wind:15,
-        gust:21,
-        direction:80,
-        directionName:"Levante",
-        windguru:"https://www.windguru.cz/49149"
+        name:"Lignano Pineta",
+        region:"Friuli Venezia Giulia",
+        country:"Italia",
+        lat:45.6800,
+        lon:13.1300,
+        windguru:"https://www.windguru.cz/49152"
     },
 
     {
-        name:"Bibione",
-        country:"Veneto",
-        lat:45.63,
-        lon:13.05,
-        wind:13,
-        gust:19,
-        direction:90,
-        directionName:"Levante",
-        windguru:"https://www.windguru.cz/49150"
+        name:"Marina Julia",
+        region:"Friuli Venezia Giulia",
+        country:"Italia",
+        lat:45.7700,
+        lon:13.5300,
+        windguru:"https://www.windguru.cz/49155"
+    },
+
+    {
+        name:"Rimini",
+        region:"Emilia-Romagna",
+        country:"Italia",
+        lat:44.0168,
+        lon:12.6446,
+        windguru:"https://www.windguru.cz/444545"
+    },
+
+    {
+        name:"Le Gorette",
+        region:"Toscana",
+        country:"Italia",
+        lat:43.3300,
+        lon:10.4600,
+        windguru:"https://www.windguru.cz/49003"
+    },
+
+    {
+        name:"Grosseto",
+        region:"Toscana",
+        country:"Italia",
+        lat:42.7631,
+        lon:11.1182,
+        windguru:"https://www.windguru.cz/532062"
+    },
+
+    {
+        name:"Sunset Beach Grosseto",
+        region:"Toscana",
+        country:"Italia",
+        lat:42.7334,
+        lon:10.9575,
+        windguru:"https://www.windguru.cz/813097"
+    },
+
+    {
+        name:"Torre Canne",
+        region:"Puglia",
+        country:"Italia",
+        lat:40.8200,
+        lon:17.4700,
+        windguru:"https://www.windguru.cz/14109"
+    },
+
+    {
+        name:"Bari",
+        region:"Puglia",
+        country:"Italia",
+        lat:41.1200,
+        lon:16.8500,
+        windguru:"https://www.windguru.cz/50402"
+    },
+
+    {
+        name:"Porto Cesareo",
+        region:"Puglia",
+        country:"Italia",
+        lat:40.2500,
+        lon:17.8700,
+        windguru:"https://www.windguru.cz/597"
+    },
+
+    {
+        name:"Crotone",
+        region:"Calabria",
+        country:"Italia",
+        lat:39.0600,
+        lon:17.1300,
+        windguru:"https://www.windguru.cz/501205"
+    },
+
+    {
+        name:"Mondello",
+        region:"Sicilia",
+        country:"Italia",
+        lat:38.2200,
+        lon:13.3300,
+        windguru:"https://www.windguru.cz/11912"
+    },
+
+    {
+        name:"Stagnone Kite Corner",
+        region:"Sicilia",
+        country:"Italia",
+        lat:37.8846,
+        lon:12.4731,
+        windguru:"https://www.windguru.cz/732466"
+    },
+
+    {
+        name:"Kite Club Marsala KSP",
+        region:"Sicilia",
+        country:"Italia",
+        lat:37.8443,
+        lon:12.4648,
+        windguru:"https://www.windguru.cz/828698"
+    },
+
+    {
+        name:"Porto Botte",
+        region:"Sardegna",
+        country:"Italia",
+        lat:39.0350,
+        lon:8.5734,
+        windguru:"https://www.windguru.cz/72737"
+    },
+
+    {
+        name:"Punta Trettu",
+        region:"Sardegna",
+        country:"Italia",
+        lat:39.1167,
+        lon:8.4416,
+        windguru:"https://www.windguru.cz/436366"
     },
 
     {
         name:"Lago di Santa Croce",
-        country:"Alpago · Veneto",
-        lat:46.12,
-        lon:12.35,
-        wind:14,
-        gust:19,
-        direction:240,
-        directionName:"Libeccio",
-        windguru:"https://www.windguru.cz/501230"
+        region:"Veneto",
+        country:"Italia",
+        lat:46.1200,
+        lon:12.3500,
+        windguru:"https://old.windguru.cz/zht/index.php?sc=501230"
     }
 
 ];
 
 
 /* =========================================================
-   POSIZIONE
+   STATO APP
    ========================================================= */
 
-function showPosition(type){
+let locationMode = "gps";
+
+let selectedDay = 0;
+
+let searchPosition = null;
+
+let searchLocationName = "";
+
+
+/* =========================================================
+   CAMBIO MODALITA' POSIZIONE
+   ========================================================= */
+
+function selectLocationMode(mode){
+
+    locationMode = mode;
 
     document
-        .getElementById("currentPosition")
-        .classList.toggle(
-            "active",
-            type==="current"
-        );
-
-    document
-        .getElementById("customPosition")
-        .classList.toggle(
-            "active",
-            type==="custom"
-        );
-
-    document
-        .getElementById("tabCurrent")
-        .classList.toggle(
-            "active",
-            type==="current"
-        );
+        .getElementById("tabGps")
+        .classList.toggle("active",mode === "gps");
 
     document
         .getElementById("tabCustom")
-        .classList.toggle(
-            "active",
-            type==="custom"
-        );
+        .classList.toggle("active",mode === "custom");
+
+    document
+        .getElementById("gpsBox")
+        .classList.toggle("active",mode === "gps");
+
+    document
+        .getElementById("customBox")
+        .classList.toggle("active",mode === "custom");
 
 }
 
 
 /* =========================================================
-   GPS
+   SELEZIONE GIORNO
    ========================================================= */
 
-function getCurrentPosition(){
+function selectDay(day){
 
-    const status =
-        document.getElementById("status");
+    selectedDay = day;
 
-    status.className="status";
+    document
+        .querySelectorAll(".date-btn")
+        .forEach(btn => {
 
-    status.textContent=
-        "Rilevamento posizione...";
-
-
-    if(!navigator.geolocation){
-
-        status.className=
-            "status error";
-
-        status.textContent=
-            "Il browser non supporta la geolocalizzazione.";
-
-        return;
-
-    }
-
-
-    navigator.geolocation.getCurrentPosition(
-
-        function(position){
-
-            searchPosition={
-
-                lat:
-                    position.coords.latitude,
-
-                lon:
-                    position.coords.longitude,
-
-                name:
-                    "Posizione attuale"
-
-            };
-
-
-            updateLocation();
-
-
-            status.className=
-                "status success";
-
-            status.textContent=
-                "Posizione acquisita.";
-
-        },
-
-
-        function(error){
-
-            status.className=
-                "status error";
-
-
-            if(error.code === 1){
-
-                status.textContent=
-                    "Posizione bloccata. Consenti al browser di usare la posizione.";
-
-            }
-
-            else if(error.code === 2){
-
-                status.textContent=
-                    "Posizione non disponibile. Riprova tra qualche secondo.";
-
-            }
-
-            else if(error.code === 3){
-
-                status.textContent=
-                    "Rilevamento troppo lento. Riprova.";
-
-            }
-
-            else{
-
-                status.textContent=
-                    "Errore nel rilevamento della posizione.";
-
-            }
-
-        },
-
-
-        {
-            enableHighAccuracy:false,
-            timeout:20000,
-            maximumAge:300000
-        }
-
-    );
-
-}
-
-
-/* =========================================================
-   RICERCA LOCALITA'
-   ========================================================= */
-
-async function searchLocation(){
-
-    const query =
-        document
-        .getElementById("locationInput")
-        .value
-        .trim();
-
-    const status =
-        document.getElementById("status");
-
-
-    if(!query){
-
-        status.className=
-            "status error";
-
-        status.textContent=
-            "Inserisci una località.";
-
-        return;
-
-    }
-
-
-    status.className="status";
-
-    status.textContent=
-        "Ricerca della località...";
-
-
-    try{
-
-        const url =
-            "https://photon.komoot.io/api/?q="+
-            encodeURIComponent(query)+
-            "&limit=1";
-
-
-        const response =
-            await fetch(url);
-
-
-        const data =
-            await response.json();
-
-
-        if(!data.features.length){
-
-            throw new Error();
-
-        }
-
-
-        const place =
-            data.features[0];
-
-
-        const coordinates =
-            place.geometry.coordinates;
-
-
-        const p =
-            place.properties;
-
-
-        let name=[];
-
-
-        if(p.name)
-            name.push(p.name);
-
-
-        if(p.city)
-            name.push(p.city);
-
-
-        if(p.country)
-            name.push(p.country);
-
-
-        searchPosition={
-
-            lat:
-                coordinates[1],
-
-            lon:
-                coordinates[0],
-
-            name:
-                name.join(", ") || query
-
-        };
-
-
-        updateLocation();
-
-
-        status.className=
-            "status success";
-
-        status.textContent=
-            "Posizione selezionata.";
-
-    }
-
-
-    catch(error){
-
-        status.className=
-            "status error";
-
-        status.textContent=
-            "Località non trovata.";
-
-    }
-
-}
-
-
-/* =========================================================
-   VISUALIZZA POSIZIONE
-   ========================================================= */
-
-function updateLocation(){
-
-    const element =
-        document.getElementById(
-            "selectedLocation"
-        );
-
-
-    element.innerHTML =
-        "Posizione: <strong>"+
-        escapeHtml(searchPosition.name)+
-        "</strong><br>"+
-        searchPosition.lat.toFixed(5)+
-        " · "+
-        searchPosition.lon.toFixed(5);
-
-}
-
-
-/* =========================================================
-   SELEZIONI
-   ========================================================= */
-
-function selectOption(button,type,value){
-
-    button
-        .parentElement
-        .querySelectorAll(".option-button")
-        .forEach(function(b){
-
-            b.classList.remove("active");
-
-        });
-
-
-    button.classList.add("active");
-
-
-    if(type==="date")
-        selectedDate=value;
-
-
-    if(type==="radius")
-        selectedRadius=value;
-
-
-    if(type==="wind")
-        selectedWindMin=value;
-
-
-    if(type==="sort")
-        selectedSort=value;
-
-}
-
-
-/* =========================================================
-   CERCA SPOT
-   ========================================================= */
-
-function findSpots(){
-
-    const status =
-        document.getElementById("status");
-
-
-    if(!searchPosition){
-
-        status.className=
-            "status error";
-
-        status.textContent=
-            "Prima devi scegliere una posizione.";
-
-        return;
-
-    }
-
-
-    status.className="status";
-
-    status.textContent=
-        "Ricerca degli spot...";
-
-
-    let results =
-        spots.map(function(spot){
-
-            return {
-
-                ...spot,
-
-                distance:
-                    distanceKm(
-                        searchPosition.lat,
-                        searchPosition.lon,
-                        spot.lat,
-                        spot.lon
-                    )
-
-            };
-
-        });
-
-
-    /* FILTRO DISTANZA */
-
-    results =
-        results.filter(function(spot){
-
-            return spot.distance <=
-                selectedRadius;
-
-        });
-
-
-    /* FILTRO VENTO MINIMO */
-
-    results =
-        results.filter(function(spot){
-
-            return spot.wind >=
-                selectedWindMin;
-
-        });
-
-
-    /* ORDINAMENTO */
-
-    if(selectedSort==="distance"){
-
-        results.sort(function(a,b){
-
-            return a.distance-b.distance;
-
-        });
-
-    }
-
-
-    if(selectedSort==="wind"){
-
-        results.sort(function(a,b){
-
-            return b.wind-a.wind;
-
-        });
-
-    }
-
-
-    if(selectedSort==="gust"){
-
-        results.sort(function(a,b){
-
-            return b.gust-a.gust;
-
-        });
-
-    }
-
-
-    if(selectedSort==="direction"){
-
-        results.sort(function(a,b){
-
-            return a.direction-b.direction;
-
-        });
-
-    }
-
-
-    renderResults(results);
-
-
-    status.className=
-        "status success";
-
-
-    status.textContent =
-        results.length+
-        " spot trovati con almeno "+
-        selectedWindMin+
-        " kt.";
-
-}
-
-
-/* =========================================================
-   RISULTATI
-   ========================================================= */
-
-function renderResults(results){
-
-    const container =
-        document.getElementById(
-            "results"
-        );
-
-
-    const list =
-        document.getElementById(
-            "spotList"
-        );
-
-
-    const count =
-        document.getElementById(
-            "resultsCount"
-        );
-
-
-    container.classList.remove(
-        "hidden"
-    );
-
-
-    list.innerHTML="";
-
-
-    count.textContent =
-        results.length+
-        (results.length===1
-            ? " spot"
-            : " spot"
-        );
-
-
-    if(results.length===0){
-
-        list.innerHTML=`
-
-            <div class="panel">
-
-                <div style="
-                    text-align:center;
-                    color:#8ca5b5;
-                    font-size:13px;
-                    line-height:1.5;
-                ">
-
-                    Nessuno spot soddisfa i criteri.
-
-                    <br><br>
-
-                    Raggio:
-                    <strong>
-                        ${
-                            selectedRadius===99999
-                            ? "Italia"
-                            : selectedRadius+" km"
-                        }
-                    </strong>
-
-                    <br>
-
-                    Vento minimo:
-                    <strong>
-                        ${selectedWindMin} kt
-                    </strong>
-
-                </div>
-
-            </div>
-
-        `;
-
-        return;
-
-    }
-
-
-    results.forEach(function(spot){
-
-        const card =
-            document.createElement(
-                "div"
+            btn.classList.toggle(
+                "active",
+                Number(btn.dataset.day) === day
             );
 
+        });
 
-        card.className=
-            "spot-card";
+}
 
 
-        card.innerHTML=`
+/* =========================================================
+   POSIZIONE GPS
+   ========================================================= */
 
-            <div class="spot-name">
+function getGPSPosition(){
 
-                ${escapeHtml(spot.name)}
+    return new Promise((resolve,reject)=>{
 
-            </div>
+        if(!navigator.geolocation){
 
+            reject(
+                new Error(
+                    "La geolocalizzazione non è supportata dal browser."
+                )
+            );
 
-            <div class="spot-country">
+            return;
+        }
 
-                ${escapeHtml(spot.country)}
 
-            </div>
+        navigator.geolocation.getCurrentPosition(
 
+            position => {
 
-            <div class="wind-grid">
+                resolve({
 
-                <div class="wind-box">
+                    lat:position.coords.latitude,
 
-                    <div class="wind-label">
-                        VENTO
-                    </div>
+                    lon:position.coords.longitude
 
-                    <div class="wind-value">
-                        ${spot.wind}
-                    </div>
+                });
 
-                    <div class="wind-unit">
-                        nodi
-                    </div>
+            },
 
-                </div>
+            error => {
 
+                let message =
+                    "Impossibile ottenere la posizione.";
 
-                <div class="wind-box">
+                if(error.code === 1){
 
-                    <div class="wind-label">
-                        RAFFICHE
-                    </div>
+                    message =
+                        "Permesso posizione negato dal browser.";
 
-                    <div class="wind-value">
-                        ${spot.gust}
-                    </div>
+                }
 
-                    <div class="wind-unit">
-                        nodi
-                    </div>
+                if(error.code === 2){
 
-                </div>
+                    message =
+                        "Posizione non disponibile.";
 
+                }
 
-                <div class="wind-box">
+                if(error.code === 3){
 
-                    <div class="wind-label">
-                        DISTANZA
-                    </div>
+                    message =
+                        "Rilevamento posizione troppo lento.";
 
-                    <div class="wind-value">
-                        ${spot.distance.toFixed(0)}
-                    </div>
+                }
 
-                    <div class="wind-unit">
-                        km
-                    </div>
+                reject(new Error(message));
 
-                </div>
+            },
 
-            </div>
+            {
 
+                enableHighAccuracy:false,
 
-            <div class="spot-info">
+                timeout:20000,
 
-                <div class="compass">
+                maximumAge:300000
 
-                    <span class="n">
-                        N
-                    </span>
+            }
 
-                    <span class="e">
-                        E
-                    </span>
-
-                    <span class="s">
-                        S
-                    </span>
-
-                    <span class="o">
-                        O
-                    </span>
-
-
-                    <div
-                        class="arrow"
-                        style="
-                            transform:
-                            translate(-50%,-100%)
-                            rotate(${spot.direction}deg);
-                        ">
-                    </div>
-
-
-                    <div class="center"></div>
-
-                </div>
-
-
-                <div class="details">
-
-                    <div class="direction">
-
-                        ${escapeHtml(
-                            spot.directionName
-                        )}
-
-                    </div>
-
-
-                    <div class="degrees">
-
-                        ${spot.direction}°
-
-                    </div>
-
-
-                    <div class="coordinates">
-
-                        ${spot.lat.toFixed(4)},
-                        ${spot.lon.toFixed(4)}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="actions">
-
-                <a
-                    class="action windguru"
-                    href="${spot.windguru}"
-                    target="_blank"
-                    rel="noopener">
-
-                    🌬 WINDGURU
-
-                </a>
-
-
-                <a
-                    class="action"
-                    href="https://www.google.com/maps/dir/?api=1&destination=${spot.lat},${spot.lon}"
-                    target="_blank"
-                    rel="noopener">
-
-                    📍 VAI ALLO SPOT
-
-                </a>
-
-            </div>
-
-        `;
-
-
-        list.appendChild(card);
+        );
 
     });
 
@@ -1664,7 +971,64 @@ function renderResults(results){
 
 
 /* =========================================================
-   DISTANZA
+   GEOCODING
+   ========================================================= */
+
+async function geocodeLocation(query){
+
+    const url =
+        "https://photon.komoot.io/api/?" +
+        "q=" +
+        encodeURIComponent(query) +
+        "&limit=1";
+
+
+    const response = await fetch(url);
+
+    if(!response.ok){
+
+        throw new Error(
+            "Errore nella ricerca della località."
+        );
+
+    }
+
+
+    const data = await response.json();
+
+
+    if(
+        !data.features ||
+        data.features.length === 0
+    ){
+
+        throw new Error(
+            "Località non trovata."
+        );
+
+    }
+
+
+    const feature = data.features[0];
+
+    return {
+
+        lat:feature.geometry.coordinates[1],
+
+        lon:feature.geometry.coordinates[0],
+
+        name:
+            feature.properties.name ||
+            feature.properties.city ||
+            query
+
+    };
+
+}
+
+
+/* =========================================================
+   DISTANZA HAVERSINE
    ========================================================= */
 
 function distanceKm(
@@ -1674,13 +1038,11 @@ function distanceKm(
     lon2
 ){
 
-    const R=6371;
-
+    const R = 6371;
 
     const dLat =
         (lat2-lat1) *
         Math.PI / 180;
-
 
     const dLon =
         (lon2-lon1) *
@@ -1688,10 +1050,14 @@ function distanceKm(
 
 
     const a =
-        Math.sin(dLat/2)**2 +
-        Math.cos(lat1*Math.PI/180) *
-        Math.cos(lat2*Math.PI/180) *
-        Math.sin(dLon/2)**2;
+        Math.sin(dLat/2) *
+        Math.sin(dLat/2) +
+
+        Math.cos(lat1 * Math.PI/180) *
+        Math.cos(lat2 * Math.PI/180) *
+
+        Math.sin(dLon/2) *
+        Math.sin(dLon/2);
 
 
     const c =
@@ -1708,19 +1074,844 @@ function distanceKm(
 
 
 /* =========================================================
-   SICUREZZA
+   DIREZIONE VENTO
    ========================================================= */
 
-function escapeHtml(text){
+function windName(degrees){
 
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    const names = [
+
+        "Tramontana",
+        "Grecale",
+        "Levante",
+        "Scirocco",
+        "Ostro",
+        "Libeccio",
+        "Ponente",
+        "Maestrale"
+
+    ];
+
+
+    const index =
+        Math.round(degrees / 45) % 8;
+
+
+    return names[index];
 
 }
+
+
+/* =========================================================
+   DATA TARGET
+   ========================================================= */
+
+function getTargetDate(){
+
+    const date = new Date();
+
+    date.setDate(
+        date.getDate() + selectedDay
+    );
+
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        String(date.getMonth()+1)
+        .padStart(2,"0");
+
+    const day =
+        String(date.getDate())
+        .padStart(2,"0");
+
+
+    return `${year}-${month}-${day}`;
+
+}
+
+
+/* =========================================================
+   PREVISIONE OPEN-METEO
+   ========================================================= */
+
+async function getForecast(spot){
+
+    const url =
+        "https://api.open-meteo.com/v1/forecast?" +
+
+        "latitude=" +
+        encodeURIComponent(spot.lat) +
+
+        "&longitude=" +
+        encodeURIComponent(spot.lon) +
+
+        "&hourly=" +
+        "wind_speed_10m," +
+        "wind_direction_10m," +
+        "wind_gusts_10m" +
+
+        "&wind_speed_unit=kn" +
+
+        "&forecast_days=16" +
+
+        "&timezone=auto";
+
+
+    const response =
+        await fetch(url);
+
+
+    if(!response.ok){
+
+        throw new Error(
+            "Errore previsione"
+        );
+
+    }
+
+
+    const data =
+        await response.json();
+
+
+    const target =
+        getTargetDate();
+
+
+    const hours =
+        data.hourly.time;
+
+
+    const speeds =
+        data.hourly.wind_speed_10m;
+
+    const gusts =
+        data.hourly.wind_gusts_10m;
+
+    const directions =
+        data.hourly.wind_direction_10m;
+
+
+    const selected = [];
+
+
+    for(
+        let i=0;
+        i<hours.length;
+        i++
+    ){
+
+        if(
+            hours[i].startsWith(target)
+        ){
+
+            const hour =
+                Number(
+                    hours[i].substring(11,13)
+                );
+
+
+            /*
+              Consideriamo principalmente
+              le ore diurne utili al kite.
+            */
+
+            if(
+                hour >= 8 &&
+                hour <= 20
+            ){
+
+                selected.push({
+
+                    speed:
+                        Number(speeds[i] || 0),
+
+                    gust:
+                        Number(gusts[i] || 0),
+
+                    direction:
+                        Number(directions[i] || 0)
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    if(selected.length === 0){
+
+        throw new Error(
+            "Previsione non disponibile"
+        );
+
+    }
+
+
+    /*
+      Vento massimo della giornata utile.
+    */
+
+    const maxWind =
+        Math.max(
+            ...selected.map(x=>x.speed)
+        );
+
+
+    const maxGust =
+        Math.max(
+            ...selected.map(x=>x.gust)
+        );
+
+
+    /*
+      Prendiamo la direzione
+      associata al momento di vento massimo.
+    */
+
+    const strongest =
+        selected.reduce(
+            (best,current) =>
+                current.speed > best.speed
+                ? current
+                : best
+        );
+
+
+    return {
+
+        wind:maxWind,
+
+        gust:maxGust,
+
+        direction:
+            strongest.direction
+
+    };
+
+}
+
+
+/* =========================================================
+   TEMPO DI VIAGGIO INDICATIVO
+   ========================================================= */
+
+function travelTime(distance){
+
+    /*
+      Stima molto indicativa.
+      Non viene presentata come tempo
+      stradale garantito.
+    */
+
+    let averageSpeed = 70;
+
+    if(distance < 40){
+        averageSpeed = 55;
+    }
+    else if(distance > 200){
+        averageSpeed = 80;
+    }
+
+
+    const minutes =
+        Math.round(
+            (distance / averageSpeed) * 60
+        );
+
+
+    const h =
+        Math.floor(minutes / 60);
+
+    const m =
+        minutes % 60;
+
+
+    if(h > 0){
+
+        return h + " h " + m + " min";
+
+    }
+
+
+    return m + " min";
+
+}
+
+
+/* =========================================================
+   GOOGLE MAPS
+   ========================================================= */
+
+function mapsLink(spot){
+
+    return (
+        "https://www.google.com/maps/dir/?api=1" +
+        "&destination=" +
+        encodeURIComponent(
+            spot.lat + "," + spot.lon
+        )
+    );
+
+}
+
+
+/* =========================================================
+   CREAZIONE CARD
+   ========================================================= */
+
+function createCard(result){
+
+    const spot =
+        result.spot;
+
+    const direction =
+        Math.round(
+            result.forecast.direction
+        );
+
+
+    const arrowStyle =
+        "transform:translate(-50%,-100%) rotate(" +
+        direction +
+        "deg);";
+
+
+    return `
+
+    <div class="card">
+
+        <div class="card-head">
+
+            <div>
+
+                <div class="spot-name">
+                    ${spot.name}
+                </div>
+
+                <div class="spot-region">
+                    ${spot.region} · ${spot.country}
+                </div>
+
+            </div>
+
+
+            <div class="wind-main">
+
+                <div class="wind-number">
+                    ${Math.round(result.forecast.wind)}
+                </div>
+
+                <div class="wind-unit">
+                    KT
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="metrics">
+
+            <div class="metric">
+
+                <div class="metric-label">
+                    Raffiche
+                </div>
+
+                <div class="metric-value">
+                    ${Math.round(result.forecast.gust)} kt
+                </div>
+
+            </div>
+
+
+            <div class="metric">
+
+                <div class="metric-label">
+                    Distanza
+                </div>
+
+                <div class="metric-value">
+                    ${result.distance.toFixed(0)} km
+                </div>
+
+            </div>
+
+
+            <div class="metric">
+
+                <div class="metric-label">
+                    Viaggio
+                </div>
+
+                <div class="metric-value">
+                    ${travelTime(result.distance)}
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="direction-box">
+
+            <div class="mini-compass">
+
+                <div
+                    class="compass-arrow"
+                    style="${arrowStyle}">
+                </div>
+
+            </div>
+
+
+            <div>
+
+                <div class="direction-text">
+                    ${windName(direction)}
+                </div>
+
+                <div class="direction-deg">
+                    ${direction}°
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="coordinates">
+
+            Coordinate spot:
+            ${spot.lat.toFixed(4)},
+            ${spot.lon.toFixed(4)}
+
+        </div>
+
+
+        <div class="card-actions">
+
+            <a
+                class="action windguru"
+                href="${spot.windguru}"
+                target="_blank"
+                rel="noopener">
+
+                WINDGURU
+
+            </a>
+
+
+            <a
+                class="action"
+                href="${mapsLink(spot)}"
+                target="_blank"
+                rel="noopener">
+
+                VAI ALLO SPOT
+
+            </a>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+
+/* =========================================================
+   RICERCA PRINCIPALE
+   ========================================================= */
+
+async function searchSpots(){
+
+    const status =
+        document.getElementById("status");
+
+    const results =
+        document.getElementById("results");
+
+
+    results.innerHTML = "";
+
+    status.className =
+        "status loading";
+
+    status.textContent =
+        "Sto cercando la posizione...";
+
+
+    try{
+
+        /*
+          1. POSIZIONE
+        */
+
+        if(locationMode === "gps"){
+
+            searchPosition =
+                await getGPSPosition();
+
+            searchLocationName =
+                "Posizione attuale";
+
+        }
+        else{
+
+            const query =
+                document
+                .getElementById("locationInput")
+                .value
+                .trim();
+
+
+            if(!query){
+
+                throw new Error(
+                    "Inserisci una località."
+                );
+
+            }
+
+
+            status.textContent =
+                "Sto cercando la località...";
+
+
+            const geo =
+                await geocodeLocation(query);
+
+
+            searchPosition = {
+
+                lat:geo.lat,
+
+                lon:geo.lon
+
+            };
+
+
+            searchLocationName =
+                geo.name;
+
+        }
+
+
+        /*
+          2. FILTRI
+        */
+
+        const radiusValue =
+            document
+            .getElementById("radius")
+            .value;
+
+
+        const radius =
+            radiusValue === "italy"
+            ? Infinity
+            : Number(radiusValue);
+
+
+        const windMin =
+            Number(
+                document
+                .getElementById("windMin")
+                .value
+            );
+
+
+        const sortBy =
+            document
+            .getElementById("sortBy")
+            .value;
+
+
+        /*
+          3. DISTANZE
+        */
+
+        status.textContent =
+            "Sto calcolando le distanze...";
+
+
+        const nearby =
+            SPOTS
+            .map(spot => {
+
+                return {
+
+                    spot:spot,
+
+                    distance:
+                        distanceKm(
+                            searchPosition.lat,
+                            searchPosition.lon,
+                            spot.lat,
+                            spot.lon
+                        )
+
+                };
+
+            })
+            .filter(item => {
+
+                return item.distance <= radius;
+
+            });
+
+
+        if(nearby.length === 0){
+
+            results.innerHTML = `
+
+                <div class="panel no-results">
+
+                    Nessuno spot presente
+                    nel raggio selezionato.
+
+                </div>
+
+            `;
+
+            status.className =
+                "status";
+
+            status.textContent =
+                "Nessuno spot trovato.";
+
+            return;
+
+        }
+
+
+        /*
+          4. PREVISIONI
+        */
+
+        status.textContent =
+            "Sto leggendo il vento degli spot...";
+
+
+        const forecastResults = [];
+
+
+        /*
+          Richiediamo le previsioni
+          in parallelo.
+        */
+
+        await Promise.all(
+
+            nearby.map(
+                async item => {
+
+                    try{
+
+                        const forecast =
+                            await getForecast(
+                                item.spot
+                            );
+
+
+                        if(
+                            forecast.wind >= windMin
+                        ){
+
+                            forecastResults.push({
+
+                                spot:item.spot,
+
+                                distance:item.distance,
+
+                                forecast:forecast
+
+                            });
+
+                        }
+
+                    }
+                    catch(error){
+
+                        console.warn(
+                            "Previsione non disponibile:",
+                            item.spot.name,
+                            error
+                        );
+
+                    }
+
+                }
+            )
+
+        );
+
+
+        /*
+          5. ORDINAMENTO
+        */
+
+        forecastResults.sort(
+            (a,b)=>{
+
+                if(sortBy === "wind"){
+
+                    return (
+                        b.forecast.wind -
+                        a.forecast.wind
+                    );
+
+                }
+
+
+                if(sortBy === "gust"){
+
+                    return (
+                        b.forecast.gust -
+                        a.forecast.gust
+                    );
+
+                }
+
+
+                if(sortBy === "direction"){
+
+                    return (
+                        a.forecast.direction -
+                        b.forecast.direction
+                    );
+
+                }
+
+
+                return (
+                    a.distance -
+                    b.distance
+                );
+
+            }
+        );
+
+
+        /*
+          6. RISULTATI
+        */
+
+        let html = `
+
+            <div class="results-header">
+
+                <div class="results-title">
+                    Spot trovati
+                </div>
+
+                <div class="results-count">
+                    ${forecastResults.length}
+                </div>
+
+            </div>
+
+        `;
+
+
+        if(forecastResults.length === 0){
+
+            html += `
+
+                <div class="panel no-results">
+
+                    Nessuno spot raggiunge
+                    il minimo di
+                    <strong>${windMin} kt</strong>
+                    nella giornata selezionata.
+
+                </div>
+
+            `;
+
+        }
+        else{
+
+            html +=
+                forecastResults
+                .map(createCard)
+                .join("");
+
+        }
+
+
+        results.innerHTML = html;
+
+
+        status.className =
+            "status success";
+
+        status.textContent =
+            searchLocationName +
+            " · " +
+            getTargetDate();
+
+
+    }
+    catch(error){
+
+        console.error(error);
+
+
+        status.className =
+            "status error";
+
+        status.textContent =
+            error.message;
+
+
+        results.innerHTML = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   AVVIO
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        /*
+          Permette INVIO nel campo località.
+        */
+
+        const input =
+            document.getElementById(
+                "locationInput"
+            );
+
+
+        input.addEventListener(
+            "keydown",
+            event => {
+
+                if(event.key === "Enter"){
+
+                    searchSpots();
+
+                }
+
+            }
+        );
+
+    }
+);
 
 </script>
 
