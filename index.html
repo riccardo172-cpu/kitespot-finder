@@ -1,418 +1,635 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>KiteSpot Finder</title>
+<title>KiteSpot Finder</title>
 
-    <meta name="theme-color" content="#071923">
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07121c;
+    color: #ffffff;
+    min-height: 100vh;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: #071923;
-            color: white;
-        }
+/* CONTENITORE PRINCIPALE */
+.app {
+    width: 100%;
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 14px;
+}
 
-        .app {
-            max-width: 900px;
-            margin: auto;
-            min-height: 100vh;
-            padding: 20px;
-        }
+/* TESTATA */
+.header {
+    text-align: center;
+    padding: 12px 5px 18px;
+}
 
-        .header {
-            text-align: center;
-            padding: 20px 10px 25px;
-        }
+.logo {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
 
-        .logo {
-            font-size: 42px;
-            margin-bottom: 5px;
-        }
+.subtitle {
+    margin-top: 5px;
+    color: #9fb3c2;
+    font-size: 14px;
+}
 
-        h1 {
-            margin: 0;
-            font-size: 32px;
-            letter-spacing: 1px;
-        }
+/* PANNELLI */
+.panel {
+    background: #102330;
+    border: 1px solid #203b4b;
+    border-radius: 18px;
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
 
-        .subtitle {
-            margin-top: 8px;
-            color: #9fc3d1;
-            font-size: 16px;
-        }
+.title {
+    font-size: 13px;
+    font-weight: bold;
+    color: #8fa9b8;
+    letter-spacing: 1px;
+    margin-bottom: 11px;
+}
 
-        .card {
-            background: #102b38;
-            border-radius: 20px;
-            padding: 22px;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-        }
+/* POSIZIONE */
+.location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .card-title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
+.location-icon {
+    font-size: 27px;
+}
 
-        .location-button {
-            width: 100%;
-            border: none;
-            border-radius: 14px;
-            padding: 17px;
-            font-size: 17px;
-            font-weight: bold;
-            cursor: pointer;
-            background: #19a7ce;
-            color: white;
-        }
+.location-text {
+    flex: 1;
+}
 
-        .location-button:hover {
-            opacity: 0.9;
-        }
+.location-name {
+    font-size: 17px;
+    font-weight: bold;
+}
 
-        #locationStatus {
-            margin-top: 12px;
-            color: #9fc3d1;
-            text-align: center;
-            font-size: 14px;
-        }
+.location-status {
+    color: #8fa9b8;
+    font-size: 12px;
+    margin-top: 3px;
+}
 
-        .dates {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
+.small-button {
+    border: none;
+    border-radius: 12px;
+    padding: 10px 12px;
+    background: #193747;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .date-button {
-            border: 2px solid #285263;
-            background: #0b202b;
-            color: white;
-            border-radius: 13px;
-            padding: 13px 8px;
-            cursor: pointer;
-            font-size: 14px;
-        }
+/* SELEZIONE GIORNI */
+.options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
 
-        .date-button strong {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
+.option {
+    border: 1px solid #294657;
+    background: #142d3c;
+    color: #cbd9e1;
+    border-radius: 11px;
+    padding: 11px 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .date-button.active {
-            background: #19a7ce;
-            border-color: #19a7ce;
-        }
+.option.active {
+    background: #ffffff;
+    color: #07121c;
+}
 
-        .search-button {
-            width: 100%;
-            margin-top: 18px;
-            border: none;
-            border-radius: 14px;
-            padding: 17px;
-            background: #f4a623;
-            color: #071923;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+/* RAGGIO */
+.radius-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
 
-        .search-button:hover {
-            opacity: 0.9;
-        }
+.radius {
+    border: 1px solid #294657;
+    background: #142d3c;
+    color: #cbd9e1;
+    border-radius: 11px;
+    padding: 11px 3px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .results {
-            display: none;
-        }
+.radius.active {
+    background: #ffffff;
+    color: #07121c;
+}
 
-        .results.visible {
-            display: block;
-        }
+/* ORDINAMENTO */
+.sort-options {
+    display: flex;
+    gap: 8px;
+}
 
-        .spot {
-            background: #0b202b;
-            border: 1px solid #285263;
-            border-radius: 16px;
-            padding: 18px;
-            margin-top: 12px;
-        }
+.sort {
+    flex: 1;
+    border: 1px solid #294657;
+    background: #142d3c;
+    color: #cbd9e1;
+    border-radius: 11px;
+    padding: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        .spot-name {
-            font-size: 20px;
-            font-weight: bold;
-        }
+.sort.active {
+    background: #ffffff;
+    color: #07121c;
+}
 
-        .spot-info {
-            color: #9fc3d1;
-            margin-top: 6px;
-        }
+/* CERCA */
+.search-button {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 17px;
+    font-size: 17px;
+    font-weight: 800;
+    background: #ffffff;
+    color: #07121c;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
-        .wind {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-top: 15px;
-        }
+.search-button:active {
+    transform: scale(0.98);
+}
 
-        .wind-box {
-            background: #102b38;
-            border-radius: 10px;
-            padding: 10px;
-            text-align: center;
-        }
+/* RISULTATI */
+.results-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin: 22px 4px 10px;
+}
 
-        .wind-box span {
-            display: block;
-            color: #8eacb7;
-            font-size: 12px;
-        }
+.result-card {
+    background: #102330;
+    border: 1px solid #203b4b;
+    border-radius: 18px;
+    margin-bottom: 14px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
 
-        .wind-box strong {
-            display: block;
-            margin-top: 4px;
-            font-size: 18px;
-        }
+.result-header {
+    padding: 15px 16px 10px;
+}
 
-        .links {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
+.spot-name {
+    font-size: 20px;
+    font-weight: 800;
+}
 
-        .links a {
-            flex: 1;
-            text-align: center;
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 10px;
-            font-weight: bold;
-            font-size: 14px;
-        }
+.spot-location {
+    margin-top: 4px;
+    color: #8fa9b8;
+    font-size: 12px;
+}
 
-        .windguru {
-            background: #19a7ce;
-            color: white;
-        }
+.info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid #203b4b;
+    border-bottom: 1px solid #203b4b;
+}
 
-        .maps {
-            background: #285263;
-            color: white;
-        }
+.info {
+    padding: 13px 7px;
+    text-align: center;
+}
 
-        .note {
-            text-align: center;
-            color: #708e99;
-            font-size: 13px;
-            margin-top: 25px;
-        }
+.info:not(:last-child) {
+    border-right: 1px solid #203b4b;
+}
 
-        @media (max-width: 600px) {
+.info-label {
+    font-size: 10px;
+    color: #8fa9b8;
+    text-transform: uppercase;
+}
 
-            .app {
-                padding: 12px;
-            }
+.info-value {
+    margin-top: 4px;
+    font-size: 19px;
+    font-weight: 800;
+}
 
-            h1 {
-                font-size: 27px;
-            }
+.info-small {
+    font-size: 12px;
+    color: #b7c8d2;
+}
 
-            .logo {
-                font-size: 36px;
-            }
+/* MAPPA */
+.map {
+    height: 150px;
+    background:
+        linear-gradient(135deg, #183746, #0c1e2a);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
-            .dates {
-                grid-template-columns: repeat(2, 1fr);
-            }
+.map-point {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    border: 4px solid #102330;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.25);
+}
 
-            .wind {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-    </style>
+.map-text {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    font-size: 10px;
+    color: #a9bdc8;
+    background: rgba(7,18,28,0.75);
+    padding: 4px 7px;
+    border-radius: 6px;
+}
+
+/* PULSANTI RISULTATO */
+.result-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px;
+}
+
+.result-button {
+    text-decoration: none;
+    text-align: center;
+    border-radius: 11px;
+    padding: 12px 5px;
+    background: #193747;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.result-button.main {
+    background: white;
+    color: #07121c;
+}
+
+/* MESSAGGIO */
+.message {
+    display: none;
+    text-align: center;
+    color: #9fb3c2;
+    padding: 20px 5px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+.footer {
+    text-align: center;
+    color: #607988;
+    font-size: 10px;
+    padding: 20px 0 10px;
+}
+
+/* SCHERMI PIÙ PICCOLI */
+@media (max-width: 380px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    .logo {
+        font-size: 26px;
+    }
+
+    .options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .radius-options {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-value {
+        font-size: 17px;
+    }
+}
+</style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <header class="header">
-        <div class="logo">🪁</div>
-        <h1>KiteSpot Finder</h1>
+    <!-- TESTATA -->
+    <div class="header">
+        <div class="logo">🌬️ KiteSpot Finder</div>
         <div class="subtitle">
-            Trova dove fare kite in base alla tua posizione
+            Trova dove fare kite in base al vento
         </div>
-    </header>
-
-
-    <div class="card">
-
-        <div class="card-title">
-            📍 La tua posizione
-        </div>
-
-        <button class="location-button" onclick="getLocation()">
-            📍 USA LA MIA POSIZIONE
-        </button>
-
-        <div id="locationStatus">
-            Posizione non ancora rilevata
-        </div>
-
     </div>
 
 
-    <div class="card">
+    <!-- POSIZIONE -->
+    <div class="panel">
 
-        <div class="card-title">
-            📅 Quando vuoi fare kite?
-        </div>
+        <div class="title">📍 POSIZIONE</div>
 
-        <div class="dates">
+        <div class="location">
 
-            <button class="date-button active" onclick="selectDate(this, 0)">
-                <strong>OGGI</strong>
-                <span id="todayDate"></span>
+            <div class="location-icon">📍</div>
+
+            <div class="location-text">
+                <div class="location-name" id="locationName">
+                    Posizione non rilevata
+                </div>
+
+                <div class="location-status" id="locationStatus">
+                    Usa il GPS per iniziare
+                </div>
+            </div>
+
+            <button class="small-button" onclick="getLocation()">
+                GPS
             </button>
-
-            <button class="date-button" onclick="selectDate(this, 1)">
-                <strong>DOMANI</strong>
-                <span id="tomorrowDate"></span>
-            </button>
-
-            <button class="date-button" onclick="selectDate(this, 2)">
-                <strong>+2 GIORNI</strong>
-                <span id="day2Date"></span>
-            </button>
-
-            <button class="date-button" onclick="selectDate(this, 7)">
-                <strong>+7 GIORNI</strong>
-                <span id="day7Date"></span>
-            </button>
-
-        </div>
-
-        <button class="search-button" onclick="searchSpots()">
-            🪁 CERCA DOVE FARE KITE
-        </button>
-
-    </div>
-
-
-    <div id="results" class="card results">
-
-        <div class="card-title">
-            🪁 Spot disponibili
-        </div>
-
-        <div class="spot">
-
-            <div class="spot-name">
-                Sottomarina
-            </div>
-
-            <div class="spot-info">
-                📍 Spot kite • distanza da calcolare
-            </div>
-
-            <div class="wind">
-
-                <div class="wind-box">
-                    <span>VENTO</span>
-                    <strong>-- kn</strong>
-                </div>
-
-                <div class="wind-box">
-                    <span>RAFFICHE</span>
-                    <strong>-- kn</strong>
-                </div>
-
-                <div class="wind-box">
-                    <span>DIREZIONE</span>
-                    <strong>--°</strong>
-                </div>
-
-            </div>
-
-            <div class="links">
-
-                <a class="windguru"
-                   href="https://www.windguru.cz/"
-                   target="_blank">
-                    WINDGURU
-                </a>
-
-                <a class="maps"
-                   href="https://www.google.com/maps/"
-                   target="_blank">
-                    🗺️ MAPPA
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="spot">
-
-            <div class="spot-name">
-                Lago di Santa Croce
-            </div>
-
-            <div class="spot-info">
-                📍 Spot kite • distanza da calcolare
-            </div>
-
-            <div class="wind">
-
-                <div class="wind-box">
-                    <span>VENTO</span>
-                    <strong>-- kn</strong>
-                </div>
-
-                <div class="wind-box">
-                    <span>RAFFICHE</span>
-                    <strong>-- kn</strong>
-                </div>
-
-                <div class="wind-box">
-                    <span>DIREZIONE</span>
-                    <strong>--°</strong>
-                </div>
-
-            </div>
-
-            <div class="links">
-
-                <a class="windguru"
-                   href="https://www.windguru.cz/"
-                   target="_blank">
-                    WINDGURU
-                </a>
-
-                <a class="maps"
-                   href="https://www.google.com/maps/"
-                   target="_blank">
-                    🗺️ MAPPA
-                </a>
-
-            </div>
 
         </div>
 
     </div>
 
 
-    <div class="note">
-        KiteSpot Finder • versione in sviluppo
+    <!-- GIORNO -->
+    <div class="panel">
+
+        <div class="title">📅 QUANDO VUOI FARE KITE?</div>
+
+        <div class="options">
+
+            <button class="option active" onclick="selectDay(this)">
+                OGGI
+            </button>
+
+            <button class="option" onclick="selectDay(this)">
+                DOMANI
+            </button>
+
+            <button class="option" onclick="selectDay(this)">
+                +2 GIORNI
+            </button>
+
+            <button class="option" onclick="selectDay(this)">
+                +7 GIORNI
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- RAGGIO -->
+    <div class="panel">
+
+        <div class="title">📏 RAGGIO DI RICERCA</div>
+
+        <div class="radius-options">
+
+            <button class="radius active" onclick="selectRadius(this)">
+                100 km
+            </button>
+
+            <button class="radius" onclick="selectRadius(this)">
+                200 km
+            </button>
+
+            <button class="radius" onclick="selectRadius(this)">
+                500 km
+            </button>
+
+            <button class="radius" onclick="selectRadius(this)">
+                ITALIA
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ORDINAMENTO -->
+    <div class="panel">
+
+        <div class="title">↕ ORDINA RISULTATI</div>
+
+        <div class="sort-options">
+
+            <button class="sort active" onclick="selectSort(this)">
+                📍 DISTANZA
+            </button>
+
+            <button class="sort" onclick="selectSort(this)">
+                💨 VENTO
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CERCA -->
+    <button class="search-button" onclick="searchSpots()">
+        🔎 CERCA SPOT
+    </button>
+
+
+    <!-- MESSAGGIO -->
+    <div class="message" id="message">
+        Ricerca degli spot in corso...
+    </div>
+
+
+    <!-- RISULTATI -->
+    <div id="results" style="display:none;">
+
+        <div class="results-title">
+            Spot trovati
+        </div>
+
+
+        <!-- SPOT 1 -->
+        <div class="result-card">
+
+            <div class="result-header">
+
+                <div class="spot-name">
+                    Porto Botte
+                </div>
+
+                <div class="spot-location">
+                    Sardegna · punto kite
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info">
+                    <div class="info-label">Distanza</div>
+                    <div class="info-value">—</div>
+                    <div class="info-small">km</div>
+                </div>
+
+                <div class="info">
+                    <div class="info-label">Vento</div>
+                    <div class="info-value">18</div>
+                    <div class="info-small">kn</div>
+                </div>
+
+                <div class="info">
+                    <div class="info-label">Raffiche</div>
+                    <div class="info-value">24</div>
+                    <div class="info-small">kn</div>
+                </div>
+
+            </div>
+
+
+            <div class="map">
+
+                <div class="map-point"></div>
+
+                <div class="map-text">
+                    📍 Coordinate esatte dello spot
+                </div>
+
+            </div>
+
+
+            <div class="result-buttons">
+
+                <a
+                    class="result-button"
+                    href="https://www.windguru.cz/72737"
+                    target="_blank">
+                    🌐 WINDGURU
+                </a>
+
+                <a
+                    class="result-button main"
+                    href="https://www.google.com/maps/dir/?api=1&destination=39.035,8.5734"
+                    target="_blank">
+                    🚗 VAI ALLO SPOT
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- SPOT 2 -->
+        <div class="result-card">
+
+            <div class="result-header">
+
+                <div class="spot-name">
+                    Punta Trettu
+                </div>
+
+                <div class="spot-location">
+                    Sardegna · punto kite
+                </div>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <div class="info">
+                    <div class="info-label">Distanza</div>
+                    <div class="info-value">—</div>
+                    <div class="info-small">km</div>
+                </div>
+
+                <div class="info">
+                    <div class="info-label">Vento</div>
+                    <div class="info-value">16</div>
+                    <div class="info-small">kn</div>
+                </div>
+
+                <div class="info">
+                    <div class="info-label">Raffiche</div>
+                    <div class="info-value">22</div>
+                    <div class="info-small">kn</div>
+                </div>
+
+            </div>
+
+
+            <div class="map">
+
+                <div class="map-point"></div>
+
+                <div class="map-text">
+                    📍 Coordinate esatte dello spot
+                </div>
+
+            </div>
+
+
+            <div class="result-buttons">
+
+                <a
+                    class="result-button"
+                    href="https://www.windguru.cz/436366"
+                    target="_blank">
+                    🌐 WINDGURU
+                </a>
+
+                <a
+                    class="result-button main"
+                    href="https://www.google.com/maps/dir/?api=1&destination=39.1167,8.4416"
+                    target="_blank">
+                    🚗 VAI ALLO SPOT
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        KiteSpot Finder · versione di sviluppo
     </div>
 
 </div>
@@ -420,97 +637,108 @@
 
 <script>
 
-let selectedDay = 0;
-let userLatitude = null;
-let userLongitude = null;
+/* GIORNO */
+function selectDay(button) {
 
+    document.querySelectorAll(".option")
+        .forEach(function(el) {
+            el.classList.remove("active");
+        });
 
-/* DATE */
-
-function formatDate(days) {
-
-    const date = new Date();
-
-    date.setDate(date.getDate() + days);
-
-    return date.toLocaleDateString("it-IT", {
-        day: "2-digit",
-        month: "2-digit"
-    });
+    button.classList.add("active");
 }
 
 
-document.getElementById("todayDate").textContent = formatDate(0);
-document.getElementById("tomorrowDate").textContent = formatDate(1);
-document.getElementById("day2Date").textContent = formatDate(2);
-document.getElementById("day7Date").textContent = formatDate(7);
+/* RAGGIO */
+function selectRadius(button) {
+
+    document.querySelectorAll(".radius")
+        .forEach(function(el) {
+            el.classList.remove("active");
+        });
+
+    button.classList.add("active");
+}
 
 
-/* SELEZIONE DATA */
+/* ORDINAMENTO */
+function selectSort(button) {
 
-function selectDate(button, days) {
-
-    selectedDay = days;
-
-    document.querySelectorAll(".date-button").forEach(function(btn) {
-        btn.classList.remove("active");
-    });
+    document.querySelectorAll(".sort")
+        .forEach(function(el) {
+            el.classList.remove("active");
+        });
 
     button.classList.add("active");
 }
 
 
 /* GPS */
-
 function getLocation() {
 
+    const name = document.getElementById("locationName");
     const status = document.getElementById("locationStatus");
 
     if (!navigator.geolocation) {
 
-        status.textContent =
-            "La geolocalizzazione non è supportata dal dispositivo.";
+        name.textContent = "GPS non disponibile";
+        status.textContent = "Il dispositivo non supporta la geolocalizzazione";
 
         return;
     }
 
-    status.textContent =
-        "📡 Sto rilevando la tua posizione...";
+    name.textContent = "Ricerca posizione...";
+    status.textContent = "Attendi qualche secondo";
 
     navigator.geolocation.getCurrentPosition(
 
         function(position) {
 
-            userLatitude = position.coords.latitude;
-            userLongitude = position.coords.longitude;
+            const lat = position.coords.latitude.toFixed(5);
+            const lon = position.coords.longitude.toFixed(5);
 
+            name.textContent = "Posizione rilevata";
             status.textContent =
-                "✅ Posizione rilevata correttamente";
-
+                "Lat " + lat + " · Lon " + lon;
         },
 
         function(error) {
 
+            name.textContent = "Posizione non disponibile";
+
             status.textContent =
-                "❌ Non è stato possibile rilevare la posizione.";
+                "Controlla i permessi GPS del browser";
+        },
 
+        {
+            enableHighAccuracy: true,
+            timeout: 10000,
+            maximumAge: 300000
         }
-
     );
 }
 
 
 /* CERCA */
-
 function searchSpots() {
 
+    const message = document.getElementById("message");
     const results = document.getElementById("results");
 
-    results.classList.add("visible");
+    message.style.display = "block";
+    results.style.display = "none";
 
-    results.scrollIntoView({
-        behavior: "smooth"
-    });
+    setTimeout(function() {
+
+        message.style.display = "none";
+        results.style.display = "block";
+
+        window.scrollTo({
+            top: results.offsetTop - 10,
+            behavior: "smooth"
+        });
+
+    }, 700);
 }
 
 </script>
