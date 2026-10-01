@@ -1,0 +1,322 @@
+﻿id,rank,name,country,lat,lon,locationQuery,windguruId,windguruUrl,windfinderUrl,googleMapsUrl,status,verificationSource,readyForApp
+,1,Torre Specchia,Italy,40.334,18.3695,"Torre Specchia, Italy",,,,"https://www.google.com/maps/search/?api=1&query=40.334,18.3695",VERIFICATO,kiteCOMPASS,True
+,2,San Foca,Italy,40.3034,18.403,"San Foca, Italy",,,,"https://www.google.com/maps/search/?api=1&query=40.3034,18.403",VERIFICATO,kiteCOMPASS,True
+,3,La Maddalena,Italy,,,"La Maddalena, Italy",,,,,DA_GEOCODIFICARE,,True
+,4,Porto Pollo,Italy,41.0,9.318,"Porto Pollo, Italy",49162,https://www.windguru.cz/49162,,"https://www.google.com/maps/search/?api=1&query=41.0,9.318",VERIFICATO,varun.surf,True
+,5,Frassanito,Italy,40.2337,18.4602,"Frassanito, Italy",,,,"https://www.google.com/maps/search/?api=1&query=40.2337,18.4602",VERIFICATO,kiteCOMPASS,True
+,6,Torre Dell'Orso,Italy,,,"Torre Dell'Orso, Italy",,,,,DA_GEOCODIFICARE,,True
+,7,Rena Majore,Italy,,,"Rena Majore, Italy",,,,,DA_GEOCODIFICARE,,True
+,8,La Baia,Italy,,,"La Baia, Italy",,,,,DA_GEOCODIFICARE,,True
+,9,Le Cannella,Italy,,,"Le Cannella, Italy",,,,,DA_GEOCODIFICARE,,True
+,10,Apani ItalyBDS,Italy,,,"Apani ItalyBDS, Italy",,,,,DA_GEOCODIFICARE,,True
+,11,Apani Punta Penne,Italy,,,"Apani Punta Penne, Italy",,,,,DA_GEOCODIFICARE,,True
+,12,Petrosino,Italy,,,"Petrosino, Italy",,,,,DA_GEOCODIFICARE,,True
+,13,Vignola,Italy,,,"Vignola, Italy",,,,,DA_GEOCODIFICARE,,True
+,14,Marina delle Rose,Italy,,,"Marina delle Rose, Italy",,,,,DA_GEOCODIFICARE,,True
+,15,Cala Pischina,Italy,,,"Cala Pischina, Italy",,,,,DA_GEOCODIFICARE,,True
+,16,Isola Stromboli,Italy,,,"Isola Stromboli, Italy",,,,,DA_GEOCODIFICARE,,True
+,17,Alimini,Italy,,,"Alimini, Italy",,,,,DA_GEOCODIFICARE,,True
+,18,Torre Chianca,Italy,,,"Torre Chianca, Italy",,,,,DA_GEOCODIFICARE,,True
+,19,Calasetta,Italy,,,"Calasetta, Italy",,,,,DA_GEOCODIFICARE,,True
+,20,Le Castella,Italy,38.9093,17.0294,"Le Castella, Italy",764187,https://www.windguru.cz/764187,,"https://www.google.com/maps/search/?api=1&query=38.9093,17.0294",VERIFICATO,varun.surf,True
+,21,Seleno,Italy,,,"Seleno, Italy",,,,,DA_GEOCODIFICARE,,True
+,22,Ostuni,Italy,,,"Ostuni, Italy",,,,,DA_GEOCODIFICARE,,True
+,23,Gallipoli Baia Verde,Italy,,,"Gallipoli Baia Verde, Italy",,,,,DA_GEOCODIFICARE,,True
+,24,Gallipoli Padula Bianca,Italy,,,"Gallipoli Padula Bianca, Italy",,,,,DA_GEOCODIFICARE,,True
+,25,Baia Verde,Italy,,,"Baia Verde, Italy",,,,,DA_GEOCODIFICARE,,True
+,26,Lazzaro,Italy,,,"Lazzaro, Italy",,,,,DA_GEOCODIFICARE,,True
+,27,Tonnarella,Italy,,,"Tonnarella, Italy",,,,,DA_GEOCODIFICARE,,True
+,28,Torre Canne,Italy,,,"Torre Canne, Italy",,,,,DA_GEOCODIFICARE,,True
+,29,Torre Canne Pilone,Italy,,,"Torre Canne Pilone, Italy",,,,,DA_GEOCODIFICARE,,True
+,30,Cirò Marina,Italy,,,"Cirò Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,31,Monópoli,Italy,,,"Monópoli, Italy",,,,,DA_GEOCODIFICARE,,True
+,32,Punta Trettu,Italy,39.112231,8.437006,"Punta Trettu, Italy",436366,https://www.windguru.cz/436366,,"https://www.google.com/maps/search/?api=1&query=39.112231,8.437006",VERIFICATO,varun.surf,True
+,33,Puzziteddu,Italy,37.561,12.6768,"Puzziteddu, Italy",49081,https://www.windguru.cz/49081,,"https://www.google.com/maps/search/?api=1&query=37.561,12.6768",VERIFICATO,varun.surf,True
+,34,Marausa,Italy,,,"Marausa, Italy",,,,,DA_GEOCODIFICARE,,True
+,35,Porto Cesáreo,Italy,40.2578,17.885,"Porto Cesáreo, Italy",597,https://www.windguru.cz/597,,"https://www.google.com/maps/search/?api=1&query=40.2578,17.885",VERIFICATO,varun.surf,True
+,36,Mare Pulito Marinella,Italy,,,"Mare Pulito Marinella, Italy",,,,,DA_GEOCODIFICARE,,True
+,37,Le Pietre,Italy,,,"Le Pietre, Italy",,,,,DA_GEOCODIFICARE,,True
+,38,Porto Pino,Italy,,,"Porto Pino, Italy",,,,,DA_GEOCODIFICARE,,True
+,39,La Pelosa Stintino,Italy,,,"La Pelosa Stintino, Italy",,,,,DA_GEOCODIFICARE,,True
+,40,Trieste Barcola,Italy,,,"Trieste Barcola, Italy",,,,,DA_GEOCODIFICARE,,True
+,41,Melissa,Italy,,,"Melissa, Italy",,,,,DA_GEOCODIFICARE,,True
+,42,Marina di Ragusa,Italy,36.7789,14.547,"Marina di Ragusa, Italy",624315,https://www.windguru.cz/624315,,"https://www.google.com/maps/search/?api=1&query=36.7789,14.547",VERIFICATO,varun.surf,True
+,43,Maritza,Italy,,,"Maritza, Italy",,,,,DA_GEOCODIFICARE,,True
+,44,Lido Signorino,Italy,,,"Lido Signorino, Italy",,,,,DA_GEOCODIFICARE,,True
+,45,San Giuliano,Italy,,,"San Giuliano, Italy",,,,,DA_GEOCODIFICARE,,True
+,46,Isola delle Correnti,Italy,,,"Isola delle Correnti, Italy",,,,,DA_GEOCODIFICARE,,True
+,47,Carratois Portopalo,Italy,,,"Carratois Portopalo, Italy",,,,,DA_GEOCODIFICARE,,True
+,48,Voltri,Italy,,,"Voltri, Italy",,,,,DA_GEOCODIFICARE,,True
+,49,Trapani,Italy,,,"Trapani, Italy",,,,,DA_GEOCODIFICARE,,True
+,50,Sellia Marina,Italy,,,"Sellia Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,51,Praialonga,Italy,,,"Praialonga, Italy",,,,,DA_GEOCODIFICARE,,True
+,52,Porto Ferro,Italy,,,"Porto Ferro, Italy",,,,,DA_GEOCODIFICARE,,True
+,53,Lo Stagnone,Italy,37.88029,12.462122,"Lo Stagnone, Italy",542133,https://www.windguru.cz/542133,,"https://www.google.com/maps/search/?api=1&query=37.88029,12.462122",VERIFICATO,varun.surf,True
+,54,San Agostino,Italy,,,"San Agostino, Italy",,,,,DA_GEOCODIFICARE,,True
+,55,Tarquinia,Italy,,,"Tarquinia, Italy",,,,,DA_GEOCODIFICARE,,True
+,56,Tiki Beach,Italy,,,"Tiki Beach, Italy",,,,,DA_GEOCODIFICARE,,True
+,57,Il Curvone,Italy,,,"Il Curvone, Italy",,,,,DA_GEOCODIFICARE,,True
+,58,Turrazzo,Italy,,,"Turrazzo, Italy",,,,,DA_GEOCODIFICARE,,True
+,59,Steccato di Cutro,Italy,,,"Steccato di Cutro, Italy",,,,,DA_GEOCODIFICARE,,True
+,60,Contrada Gabella Nord Foce,Italy,,,"Contrada Gabella Nord Foce, Italy",,,,,DA_GEOCODIFICARE,,True
+,61,Contrada Gabella,Italy,,,"Contrada Gabella, Italy",,,,,DA_GEOCODIFICARE,,True
+,62,Contrada Gabella Wild Wave,Italy,,,"Contrada Gabella Wild Wave, Italy",,,,,DA_GEOCODIFICARE,,True
+,63,Contrada Gabella Sud Wild Wave,Italy,,,"Contrada Gabella Sud Wild Wave, Italy",,,,,DA_GEOCODIFICARE,,True
+,64,Contrada Gabella,Italy,,,"Contrada Gabella, Italy",,,,,DA_GEOCODIFICARE,,True
+,65,Villasimius,Italy,,,"Villasimius, Italy",,,,,DA_GEOCODIFICARE,,True
+,66,Funtana Meiga,Italy,,,"Funtana Meiga, Italy",,,,,DA_GEOCODIFICARE,,True
+,67,Rio Vivo Termoli,Italy,,,"Rio Vivo Termoli, Italy",,,,,DA_GEOCODIFICARE,,True
+,68,Torre Mileto,Italy,,,"Torre Mileto, Italy",,,,,DA_GEOCODIFICARE,,True
+,69,Marina di Modica,Italy,,,"Marina di Modica, Italy",,,,,DA_GEOCODIFICARE,,True
+,70,La Ciaccia,Italy,,,"La Ciaccia, Italy",,,,,DA_GEOCODIFICARE,,True
+,71,San Pietro,Italy,,,"San Pietro, Italy",,,,,DA_GEOCODIFICARE,,True
+,72,Spotorno,Italy,,,"Spotorno, Italy",,,,,DA_GEOCODIFICARE,,True
+,73,Onda blu Lido,Italy,,,"Onda blu Lido, Italy",,,,,DA_GEOCODIFICARE,,True
+,74,Marina di Lizzano,Italy,,,"Marina di Lizzano, Italy",,,,,DA_GEOCODIFICARE,,True
+,75,Civitavécchia Centrale,Italy,,,"Civitavécchia Centrale, Italy",,,,,DA_GEOCODIFICARE,,True
+,76,Punta Pellaro,Italy,,,"Punta Pellaro, Italy",,,,,DA_GEOCODIFICARE,,True
+,77,La Stalla Mugoni,Italy,,,"La Stalla Mugoni, Italy",,,,,DA_GEOCODIFICARE,,True
+,78,Strongoli Marina,Italy,,,"Strongoli Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,79,Crotone,Italy,,,"Crotone, Italy",,,,,DA_GEOCODIFICARE,,True
+,80,Nirvana Club Village,Italy,,,"Nirvana Club Village, Italy",,,,,DA_GEOCODIFICARE,,True
+,81,Botricello,Italy,,,"Botricello, Italy",,,,,DA_GEOCODIFICARE,,True
+,82,Spiaggia dei Pescatori Ischia,Italy,,,"Spiaggia dei Pescatori Ischia, Italy",,,,,DA_GEOCODIFICARE,,True
+,83,Funtanamare,Italy,,,"Funtanamare, Italy",,,,,DA_GEOCODIFICARE,,True
+,84,Kitebeach Termoli,Italy,,,"Kitebeach Termoli, Italy",,,,,DA_GEOCODIFICARE,,True
+,85,Termoli Kite Beach,Italy,,,"Termoli Kite Beach, Italy",,,,,DA_GEOCODIFICARE,,True
+,86,Marina di Lesina,Italy,,,"Marina di Lesina, Italy",,,,,DA_GEOCODIFICARE,,True
+,87,Platamona Lido,Italy,40.8103,8.4658,"Platamona Lido, Italy",49171,https://www.windguru.cz/49171,,"https://www.google.com/maps/search/?api=1&query=40.8103,8.4658",VERIFICATO,varun.surf,True
+,88,Marina di Sorso,Italy,,,"Marina di Sorso, Italy",,,,,DA_GEOCODIFICARE,,True
+,89,Rio Favara,Italy,,,"Rio Favara, Italy",,,,,DA_GEOCODIFICARE,,True
+,90,Isola Rossa,Italy,,,"Isola Rossa, Italy",,,,,DA_GEOCODIFICARE,,True
+,91,Montaldo di Castro,Italy,,,"Montaldo di Castro, Italy",,,,,DA_GEOCODIFICARE,,True
+,92,Mari Ermi,Italy,,,"Mari Ermi, Italy",,,,,DA_GEOCODIFICARE,,True
+,93,Capo Mannu,Italy,40.0378,8.3722,"Capo Mannu, Italy",29081,https://www.windguru.cz/29081,,"https://www.google.com/maps/search/?api=1&query=40.0378,8.3722",VERIFICATO,varun.surf,True
+,94,Chia,Italy,38.8836,8.8636,"Chia, Italy",1522,https://www.windguru.cz/1522,,"https://www.google.com/maps/search/?api=1&query=38.8836,8.8636",VERIFICATO,varun.surf,True
+,95,La Torre,Italy,,,"La Torre, Italy",,,,,DA_GEOCODIFICARE,,True
+,96,Geremeas,Italy,,,"Geremeas, Italy",,,,,DA_GEOCODIFICARE,,True
+,97,Campomarino,Italy,,,"Campomarino, Italy",,,,,DA_GEOCODIFICARE,,True
+,98,Giovinazzo,Italy,,,"Giovinazzo, Italy",,,,,DA_GEOCODIFICARE,,True
+,99,Molfetta,Italy,,,"Molfetta, Italy",,,,,DA_GEOCODIFICARE,,True
+,100,Cagliari,Italy,,,"Cagliari, Italy",,,,,DA_GEOCODIFICARE,,True
+,101,Margherita di Savoia,Italy,41.3851,16.1609,"Margherita di Savoia, Italy",250626,https://www.windguru.cz/250626,,"https://www.google.com/maps/search/?api=1&query=41.3851,16.1609",VERIFICATO,varun.surf,True
+,102,Vasto Marina,Italy,42.105,14.7161,"Vasto Marina, Italy",49118,https://www.windguru.cz/49118,,"https://www.google.com/maps/search/?api=1&query=42.105,14.7161",VERIFICATO,varun.surf,True
+,103,Falconara,Italy,,,"Falconara, Italy",,,,,DA_GEOCODIFICARE,,True
+,104,Lillatro,Italy,,,"Lillatro, Italy",,,,,DA_GEOCODIFICARE,,True
+,105,Spiagge Bianche,Italy,43.3742,10.4364,"Spiagge Bianche, Italy",49002,https://www.windguru.cz/49002,,"https://www.google.com/maps/search/?api=1&query=43.3742,10.4364",VERIFICATO,varun.surf,True
+,106,Vada,Italy,43.3742,10.4364,"Vada, Italy",49002,https://www.windguru.cz/49002,,"https://www.google.com/maps/search/?api=1&query=43.3742,10.4364",VERIFICATO,varun.surf,True
+,107,San Teodoro La Cinta,Italy,,,"San Teodoro La Cinta, Italy",,,,,DA_GEOCODIFICARE,,True
+,108,Spiaggia Lunga,Italy,,,"Spiaggia Lunga, Italy",,,,,DA_GEOCODIFICARE,,True
+,109,Capo Linaro,Italy,,,"Capo Linaro, Italy",,,,,DA_GEOCODIFICARE,,True
+,110,Galati,Italy,,,"Galati, Italy",,,,,DA_GEOCODIFICARE,,True
+,111,Tremestrieri,Italy,,,"Tremestrieri, Italy",,,,,DA_GEOCODIFICARE,,True
+,112,Scaletta,Italy,,,"Scaletta, Italy",,,,,DA_GEOCODIFICARE,,True
+,113,Noli,Italy,,,"Noli, Italy",,,,,DA_GEOCODIFICARE,,True
+,114,Marina di Pescia,Italy,,,"Marina di Pescia, Italy",,,,,DA_GEOCODIFICARE,,True
+,115,Capalbio,Italy,,,"Capalbio, Italy",,,,,DA_GEOCODIFICARE,,True
+,116,Pittulongu,Italy,,,"Pittulongu, Italy",,,,,DA_GEOCODIFICARE,,True
+,117,Vecchie Saline,Italy,,,"Vecchie Saline, Italy",,,,,DA_GEOCODIFICARE,,True
+,118,Muravera,Italy,,,"Muravera, Italy",,,,,DA_GEOCODIFICARE,,True
+,119,Marina San Nicola,Italy,,,"Marina San Nicola, Italy",,,,,DA_GEOCODIFICARE,,True
+,120,KM31,Italy,,,"KM31, Italy",,,,,DA_GEOCODIFICARE,,True
+,121,Quercianella - Calambrese,Italy,,,"Quercianella - Calambrese, Italy",,,,,DA_GEOCODIFICARE,,True
+,122,Coccia di Morto,Italy,,,"Coccia di Morto, Italy",,,,,DA_GEOCODIFICARE,,True
+,123,Banzai,Italy,,,"Banzai, Italy",,,,,DA_GEOCODIFICARE,,True
+,124,Cala della Morte,Italy,,,"Cala della Morte, Italy",,,,,DA_GEOCODIFICARE,,True
+,125,Palese,Italy,,,"Palese, Italy",,,,,DA_GEOCODIFICARE,,True
+,126,Marina di Pisa,Italy,43.6843,10.2686,"Marina di Pisa, Italy",81215,https://www.windguru.cz/81215,,"https://www.google.com/maps/search/?api=1&query=43.6843,10.2686",VERIFICATO,varun.surf,True
+,127,Le Gorette,Italy,,,"Le Gorette, Italy",,,,,DA_GEOCODIFICARE,,True
+,128,Maccarese,Italy,,,"Maccarese, Italy",,,,,DA_GEOCODIFICARE,,True
+,129,Lido Kitebeach,Italy,45.3753,12.3455,"Lido Kitebeach, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.3753,12.3455",VERIFICATO,kiteCOMPASS,True
+,130,Tre Ponti,Italy,,,"Tre Ponti, Italy",,,,,DA_GEOCODIFICARE,,True
+,131,Calambrone,Italy,,,"Calambrone, Italy",,,,,DA_GEOCODIFICARE,,True
+,132,San Lorenzo,Italy,,,"San Lorenzo, Italy",,,,,DA_GEOCODIFICARE,,True
+,133,Pizzomunno,Italy,,,"Pizzomunno, Italy",,,,,DA_GEOCODIFICARE,,True
+,134,Punta Lunga,Italy,,,"Punta Lunga, Italy",,,,,DA_GEOCODIFICARE,,True
+,135,Isola delle Conchiglie,Italy,,,"Isola delle Conchiglie, Italy",,,,,DA_GEOCODIFICARE,,True
+,136,Lido di Noto,Italy,,,"Lido di Noto, Italy",,,,,DA_GEOCODIFICARE,,True
+,137,Porto Botte,Italy,39.0382,8.5713,"Porto Botte, Italy",1102850,https://www.windguru.cz/1102850,,"https://www.google.com/maps/search/?api=1&query=39.0382,8.5713",VERIFICATO,varun.surf,True
+,138,Lido di Spina,Italy,44.6555,12.2535,"Lido di Spina, Italy",1187042,https://www.windguru.cz/1187042,,"https://www.google.com/maps/search/?api=1&query=44.6555,12.2535",VERIFICATO,varun.surf,True
+,139,Marina di Grosseto,Italy,,,"Marina di Grosseto, Italy",,,,,DA_GEOCODIFICARE,,True
+,140,Grado Pineta,Italy,,,"Grado Pineta, Italy",,,,,DA_GEOCODIFICARE,,True
+,141,Gizzeria Lido,Italy,,,"Gizzeria Lido, Italy",,,,,DA_GEOCODIFICARE,,True
+,142,Capo Suvero,Italy,,,"Capo Suvero, Italy",,,,,DA_GEOCODIFICARE,,True
+,143,Gizzeria Lido Camping Fabiano,Italy,,,"Gizzeria Lido Camping Fabiano, Italy",,,,,DA_GEOCODIFICARE,,True
+,144,Spiaggia di Magaggiari Terrasini,Italy,,,"Spiaggia di Magaggiari Terrasini, Italy",,,,,DA_GEOCODIFICARE,,True
+,145,Torre di Gaffe,Italy,,,"Torre di Gaffe, Italy",,,,,DA_GEOCODIFICARE,,True
+,146,Scoglitti,Italy,,,"Scoglitti, Italy",,,,,DA_GEOCODIFICARE,,True
+,147,Porto Empédocle,Italy,,,"Porto Empédocle, Italy",,,,,DA_GEOCODIFICARE,,True
+,148,Porto Pirastu,Italy,,,"Porto Pirastu, Italy",,,,,DA_GEOCODIFICARE,,True
+,149,Capo Ferrato,Italy,,,"Capo Ferrato, Italy",,,,,DA_GEOCODIFICARE,,True
+,150,Petrol Beach,Italy,,,"Petrol Beach, Italy",,,,,DA_GEOCODIFICARE,,True
+,151,Barletta,Italy,,,"Barletta, Italy",,,,,DA_GEOCODIFICARE,,True
+,152,Andora,Italy,,,"Andora, Italy",,,,,DA_GEOCODIFICARE,,True
+,153,Lido di Savio,Italy,,,"Lido di Savio, Italy",,,,,DA_GEOCODIFICARE,,True
+,154,Focene Kitebeach,Italy,,,"Focene Kitebeach, Italy",,,,,DA_GEOCODIFICARE,,True
+,155,Fregene,Italy,41.8489,12.1897,"Fregene, Italy",49029,https://www.windguru.cz/49029,,"https://www.google.com/maps/search/?api=1&query=41.8489,12.1897",VERIFICATO,varun.surf,True
+,156,Secca Grande,Italy,,,"Secca Grande, Italy",,,,,DA_GEOCODIFICARE,,True
+,157,Sottomarina,Italy,45.1959,12.3042,"Sottomarina, Italy",336320,https://www.windguru.cz/336320,,"https://www.google.com/maps/search/?api=1&query=45.1959,12.3042",VERIFICATO,Windguru,True
+,158,Marina di Donoratico,Italy,,,"Marina di Donoratico, Italy",,,,,DA_GEOCODIFICARE,,True
+,159,Punta Marina,Italy,,,"Punta Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,160,Lido di Classe,Italy,,,"Lido di Classe, Italy",,,,,DA_GEOCODIFICARE,,True
+,161,Bagno Onda Blu,Italy,,,"Bagno Onda Blu, Italy",,,,,DA_GEOCODIFICARE,,True
+,162,Logonovo,Italy,,,"Logonovo, Italy",,,,,DA_GEOCODIFICARE,,True
+,163,Marina Romea,Italy,,,"Marina Romea, Italy",,,,,DA_GEOCODIFICARE,,True
+,164,Fossacesia,Italy,,,"Fossacesia, Italy",,,,,DA_GEOCODIFICARE,,True
+,165,Bibione,Italy,45.6322,13.0508,"Bibione, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.6322,13.0508",VERIFICATO,kiteCOMPASS,True
+,166,Capo Miseno,Italy,40.7953,14.0783,"Capo Miseno, Italy",172422,https://www.windguru.cz/172422,,"https://www.google.com/maps/search/?api=1&query=40.7953,14.0783",VERIFICATO,varun.surf,True
+,167,Marina di Gioiosa Jonica,Italy,,,"Marina di Gioiosa Jonica, Italy",,,,,DA_GEOCODIFICARE,,True
+,168,La Rabbina,Italy,,,"La Rabbina, Italy",,,,,DA_GEOCODIFICARE,,True
+,169,Santa Margherita,Italy,,,"Santa Margherita, Italy",,,,,DA_GEOCODIFICARE,,True
+,170,Castiglione,Italy,,,"Castiglione, Italy",,,,,DA_GEOCODIFICARE,,True
+,171,Varcaturo,Italy,,,"Varcaturo, Italy",,,,,DA_GEOCODIFICARE,,True
+,172,Fusaro,Italy,,,"Fusaro, Italy",,,,,DA_GEOCODIFICARE,,True
+,173,Rossano,Italy,,,"Rossano, Italy",,,,,DA_GEOCODIFICARE,,True
+,174,Torre Paola,Italy,,,"Torre Paola, Italy",,,,,DA_GEOCODIFICARE,,True
+,175,Jolly Beach,Italy,,,"Jolly Beach, Italy",,,,,DA_GEOCODIFICARE,,True
+,176,Fornaci Beach,Italy,,,"Fornaci Beach, Italy",,,,,DA_GEOCODIFICARE,,True
+,177,Ciammarita,Italy,,,"Ciammarita, Italy",,,,,DA_GEOCODIFICARE,,True
+,178,San Vincenzo,Italy,,,"San Vincenzo, Italy",,,,,DA_GEOCODIFICARE,,True
+,179,La Caletta,Italy,,,"La Caletta, Italy",,,,,DA_GEOCODIFICARE,,True
+,180,Ostia,Italy,41.7256,12.2717,"Ostia, Italy",49032,https://www.windguru.cz/49032,,"https://www.google.com/maps/search/?api=1&query=41.7256,12.2717",VERIFICATO,varun.surf,True
+,181,Marina di Ravenna,Italy,,,"Marina di Ravenna, Italy",,,,,DA_GEOCODIFICARE,,True
+,182,Porto Corsini,Italy,,,"Porto Corsini, Italy",,,,,DA_GEOCODIFICARE,,True
+,183,Agnone,Italy,,,"Agnone, Italy",,,,,DA_GEOCODIFICARE,,True
+,184,San Leone,Italy,,,"San Leone, Italy",,,,,DA_GEOCODIFICARE,,True
+,185,Cannatello,Italy,,,"Cannatello, Italy",,,,,DA_GEOCODIFICARE,,True
+,186,Bari,Italy,,,"Bari, Italy",,,,,DA_GEOCODIFICARE,,True
+,187,Marina Julia,Italy,,,"Marina Julia, Italy",,,,,DA_GEOCODIFICARE,,True
+,188,Diano Marina,Italy,,,"Diano Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,189,Marano,Italy,,,"Marano, Italy",,,,,DA_GEOCODIFICARE,,True
+,190,Genoa,Italy,,,"Genoa, Italy",,,,,DA_GEOCODIFICARE,,True
+,191,Punta Sabbioni,Italy,45.4301,12.4378,"Punta Sabbioni, Italy",299765,https://www.windguru.cz/299765,,"https://www.google.com/maps/search/?api=1&query=45.4301,12.4378",VERIFICATO,varun.surf,True
+,192,Alghero,Italy,,,"Alghero, Italy",,,,,DA_GEOCODIFICARE,,True
+,193,Vigna di Valle,Italy,,,"Vigna di Valle, Italy",,,,,DA_GEOCODIFICARE,,True
+,194,Punta Licosa,Italy,,,"Punta Licosa, Italy",,,,,DA_GEOCODIFICARE,,True
+,195,Casa del Conte,Italy,,,"Casa del Conte, Italy",,,,,DA_GEOCODIFICARE,,True
+,196,Tirrenia,Italy,,,"Tirrenia, Italy",,,,,DA_GEOCODIFICARE,,True
+,197,Marzocca,Italy,,,"Marzocca, Italy",,,,,DA_GEOCODIFICARE,,True
+,198,Melilli,Italy,,,"Melilli, Italy",,,,,DA_GEOCODIFICARE,,True
+,199,Foce Tagliamento,Italy,,,"Foce Tagliamento, Italy",,,,,DA_GEOCODIFICARE,,True
+,200,Baia di Talamone,Italy,,,"Baia di Talamone, Italy",,,,,DA_GEOCODIFICARE,,True
+,201,Mattinata,Italy,,,"Mattinata, Italy",,,,,DA_GEOCODIFICARE,,True
+,202,Spiaggia dei Saraceni,Italy,,,"Spiaggia dei Saraceni, Italy",,,,,DA_GEOCODIFICARE,,True
+,203,Latina Foce Verde,Italy,,,"Latina Foce Verde, Italy",,,,,DA_GEOCODIFICARE,,True
+,204,Marinello,Italy,,,"Marinello, Italy",,,,,DA_GEOCODIFICARE,,True
+,205,Giannella,Italy,,,"Giannella, Italy",,,,,DA_GEOCODIFICARE,,True
+,206,Bacino della Standiana,Italy,,,"Bacino della Standiana, Italy",,,,,DA_GEOCODIFICARE,,True
+,207,Cannitello,Italy,,,"Cannitello, Italy",,,,,DA_GEOCODIFICARE,,True
+,208,Il Pilone,Italy,,,"Il Pilone, Italy",,,,,DA_GEOCODIFICARE,,True
+,209,San Menaio,Italy,,,"San Menaio, Italy",,,,,DA_GEOCODIFICARE,,True
+,210,Piazza Brescia,Italy,,,"Piazza Brescia, Italy",,,,,DA_GEOCODIFICARE,,True
+,211,Loano,Italy,,,"Loano, Italy",,,,,DA_GEOCODIFICARE,,True
+,212,Lido di Volano,Italy,,,"Lido di Volano, Italy",,,,,DA_GEOCODIFICARE,,True
+,213,Manfredonia,Italy,,,"Manfredonia, Italy",,,,,DA_GEOCODIFICARE,,True
+,214,Perelli,Italy,,,"Perelli, Italy",,,,,DA_GEOCODIFICARE,,True
+,215,Cervia,Italy,,,"Cervia, Italy",,,,,DA_GEOCODIFICARE,,True
+,216,Cesenatico,Italy,44.2009,12.4063,"Cesenatico, Italy",154052,https://www.windguru.cz/154052,,"https://www.google.com/maps/search/?api=1&query=44.2009,12.4063",VERIFICATO,varun.surf,True
+,217,Mondello,Italy,,,"Mondello, Italy",,,,,DA_GEOCODIFICARE,,True
+,218,Rimini,Italy,44.0728,12.5711,"Rimini, Italy",130442,https://www.windguru.cz/130442,,"https://www.google.com/maps/search/?api=1&query=44.0728,12.5711",VERIFICATO,varun.surf,True
+,219,Brancaleone,Italy,,,"Brancaleone, Italy",,,,,DA_GEOCODIFICARE,,True
+,220,Capo Spartivento,Italy,,,"Capo Spartivento, Italy",,,,,DA_GEOCODIFICARE,,True
+,221,Foddini,Italy,,,"Foddini, Italy",,,,,DA_GEOCODIFICARE,,True
+,222,Catona,Italy,,,"Catona, Italy",,,,,DA_GEOCODIFICARE,,True
+,223,Feniglia,Italy,,,"Feniglia, Italy",,,,,DA_GEOCODIFICARE,,True
+,224,Panama Beach Torre di Manfria,Italy,,,"Panama Beach Torre di Manfria, Italy",,,,,DA_GEOCODIFICARE,,True
+,225,Torvaianica,Italy,,,"Torvaianica, Italy",,,,,DA_GEOCODIFICARE,,True
+,226,Lignano & Alla Sacca,Italy,,,"Lignano & Alla Sacca, Italy",,,,,DA_GEOCODIFICARE,,True
+,227,Sturla,Italy,,,"Sturla, Italy",,,,,DA_GEOCODIFICARE,,True
+,228,La Torraccia,Italy,,,"La Torraccia, Italy",,,,,DA_GEOCODIFICARE,,True
+,229,Valverde,Italy,,,"Valverde, Italy",,,,,DA_GEOCODIFICARE,,True
+,230,Marina di Vecchiano,Italy,,,"Marina di Vecchiano, Italy",,,,,DA_GEOCODIFICARE,,True
+,231,Ostia Kite Village,Italy,,,"Ostia Kite Village, Italy",,,,,DA_GEOCODIFICARE,,True
+,232,Joppolo,Italy,,,"Joppolo, Italy",,,,,DA_GEOCODIFICARE,,True
+,233,Bellaria Igea Marina,Italy,,,"Bellaria Igea Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,234,Anzio Lido Garda,Italy,,,"Anzio Lido Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,235,Anzio Levante,Italy,,,"Anzio Levante, Italy",,,,,DA_GEOCODIFICARE,,True
+,236,San Felice Circeo Carrubo,Italy,,,"San Felice Circeo Carrubo, Italy",,,,,DA_GEOCODIFICARE,,True
+,237,Baratti,Italy,,,"Baratti, Italy",,,,,DA_GEOCODIFICARE,,True
+,238,Cattolica,Italy,,,"Cattolica, Italy",,,,,DA_GEOCODIFICARE,,True
+,239,Sabaudia Bufalara,Italy,,,"Sabaudia Bufalara, Italy",,,,,DA_GEOCODIFICARE,,True
+,240,Ardore Marina,Italy,,,"Ardore Marina, Italy",,,,,DA_GEOCODIFICARE,,True
+,241,Nizza di Sicilia,Italy,,,"Nizza di Sicilia, Italy",,,,,DA_GEOCODIFICARE,,True
+,242,Caorle,Italy,45.6091,12.9005,"Caorle, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.6091,12.9005",VERIFICATO,kiteCOMPASS,True
+,243,Santa Giusta,Italy,,,"Santa Giusta, Italy",,,,,DA_GEOCODIFICARE,,True
+,244,Gela Lungomare,Italy,,,"Gela Lungomare, Italy",,,,,DA_GEOCODIFICARE,,True
+,245,Campo di Mare,Italy,,,"Campo di Mare, Italy",,,,,DA_GEOCODIFICARE,,True
+,246,Zapponeta,Italy,,,"Zapponeta, Italy",,,,,DA_GEOCODIFICARE,,True
+,247,Pescara Tortuga,Italy,,,"Pescara Tortuga, Italy",,,,,DA_GEOCODIFICARE,,True
+,248,Palombina,Italy,,,"Palombina, Italy",,,,,DA_GEOCODIFICARE,,True
+,249,Reggio Calabria,Italy,,,"Reggio Calabria, Italy",,,,,DA_GEOCODIFICARE,,True
+,250,Capo d'Orlando,Italy,,,"Capo d'Orlando, Italy",,,,,DA_GEOCODIFICARE,,True
+,251,Portonovo,Italy,,,"Portonovo, Italy",,,,,DA_GEOCODIFICARE,,True
+,252,Sassi Neri,Italy,,,"Sassi Neri, Italy",,,,,DA_GEOCODIFICARE,,True
+,253,Porto Potenza,Italy,,,"Porto Potenza, Italy",,,,,DA_GEOCODIFICARE,,True
+,254,Porto Sant'Elpido,Italy,,,"Porto Sant'Elpido, Italy",,,,,DA_GEOCODIFICARE,,True
+,255,Báia Domizia,Italy,,,"Báia Domizia, Italy",,,,,DA_GEOCODIFICARE,,True
+,256,Cortellazzo,Italy,,,"Cortellazzo, Italy",,,,,DA_GEOCODIFICARE,,True
+,257,Spiaggia d'Oro,Italy,,,"Spiaggia d'Oro, Italy",,,,,DA_GEOCODIFICARE,,True
+,258,Milano Marittima,Italy,,,"Milano Marittima, Italy",,,,,DA_GEOCODIFICARE,,True
+,259,Pioppi,Italy,,,"Pioppi, Italy",,,,,DA_GEOCODIFICARE,,True
+,260,Acciaroli,Italy,,,"Acciaroli, Italy",,,,,DA_GEOCODIFICARE,,True
+,261,Albenga,Italy,,,"Albenga, Italy",,,,,DA_GEOCODIFICARE,,True
+,262,Punta Ala,Italy,,,"Punta Ala, Italy",,,,,DA_GEOCODIFICARE,,True
+,263,Brenzone Lago di Garda,Italy,,,"Brenzone Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,264,Campione Lago di Garda,Italy,45.752823,10.748778,"Campione Lago di Garda, Italy",68399,https://www.windguru.cz/68399,,"https://www.google.com/maps/search/?api=1&query=45.752823,10.748778",VERIFICATO,varun.surf,True
+,265,Lake Garda,Italy,45.7158,10.7724,"Lake Garda, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.7158,10.7724",VERIFICATO,kiteCOMPASS,True
+,266,Numana Blu,Italy,,,"Numana Blu, Italy",,,,,DA_GEOCODIFICARE,,True
+,267,Francavilla Foro,Italy,,,"Francavilla Foro, Italy",,,,,DA_GEOCODIFICARE,,True
+,268,Stazione di Tollo,Italy,,,"Stazione di Tollo, Italy",,,,,DA_GEOCODIFICARE,,True
+,269,Sestri Levante,Italy,,,"Sestri Levante, Italy",,,,,DA_GEOCODIFICARE,,True
+,270,Civitanova,Italy,,,"Civitanova, Italy",,,,,DA_GEOCODIFICARE,,True
+,271,Gioia Tauro,Italy,,,"Gioia Tauro, Italy",,,,,DA_GEOCODIFICARE,,True
+,272,Hotel Pier Lago di Garda,Italy,,,"Hotel Pier Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,273,Scauri,Italy,,,"Scauri, Italy",,,,,DA_GEOCODIFICARE,,True
+,274,Terracina,Italy,,,"Terracina, Italy",,,,,DA_GEOCODIFICARE,,True
+,275,Porto Badino,Italy,,,"Porto Badino, Italy",,,,,DA_GEOCODIFICARE,,True
+,276,La Pineta Porto Recanati,Italy,,,"La Pineta Porto Recanati, Italy",,,,,DA_GEOCODIFICARE,,True
+,277,Al Pra Lago di Garda,Italy,,,"Al Pra Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,278,Ponte di Ferro,Italy,,,"Ponte di Ferro, Italy",,,,,DA_GEOCODIFICARE,,True
+,279,Follónica,Italy,,,"Follónica, Italy",,,,,DA_GEOCODIFICARE,,True
+,280,Pescara Portanuova,Italy,,,"Pescara Portanuova, Italy",,,,,DA_GEOCODIFICARE,,True
+,281,Viareggio,Italy,,,"Viareggio, Italy",,,,,DA_GEOCODIFICARE,,True
+,282,Marina Palmense,Italy,,,"Marina Palmense, Italy",,,,,DA_GEOCODIFICARE,,True
+,283,Bababoom,Italy,,,"Bababoom, Italy",,,,,DA_GEOCODIFICARE,,True
+,284,Torri del Benaco Lago di Garda,Italy,,,"Torri del Benaco Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,285,Eboli,Italy,,,"Eboli, Italy",,,,,DA_GEOCODIFICARE,,True
+,286,Salerno,Italy,,,"Salerno, Italy",,,,,DA_GEOCODIFICARE,,True
+,287,Cetara,Italy,,,"Cetara, Italy",,,,,DA_GEOCODIFICARE,,True
+,288,Agropoli,Italy,,,"Agropoli, Italy",,,,,DA_GEOCODIFICARE,,True
+,289,Fiumaretta,Italy,,,"Fiumaretta, Italy",,,,,DA_GEOCODIFICARE,,True
+,290,Arma di Taggia,Italy,,,"Arma di Taggia, Italy",,,,,DA_GEOCODIFICARE,,True
+,291,Puntone di Scarlino,Italy,,,"Puntone di Scarlino, Italy",,,,,DA_GEOCODIFICARE,,True
+,292,Pontechianale,Italy,,,"Pontechianale, Italy",,,,,DA_GEOCODIFICARE,,True
+,293,Casál Velino,Italy,,,"Casál Velino, Italy",,,,,DA_GEOCODIFICARE,,True
+,294,Amalfi,Italy,,,"Amalfi, Italy",,,,,DA_GEOCODIFICARE,,True
+,295,Forte dei Marmi,Italy,,,"Forte dei Marmi, Italy",,,,,DA_GEOCODIFICARE,,True
+,296,Caranca,Italy,,,"Caranca, Italy",,,,,DA_GEOCODIFICARE,,True
+,297,Malcesine Bus Depot Lago di Garda,Italy,,,"Malcesine Bus Depot Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,298,Wind Square Lago di Garda,Italy,,,"Wind Square Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,299,Campagnola Lago di Garda,Italy,,,"Campagnola Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,300,Hotel Capo Reamol Lago di Garda,Italy,45.8279,10.8215,"Hotel Capo Reamol Lago di Garda, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.8279,10.8215",VERIFICATO,kiteCOMPASS,True
+,301,San Remo,Italy,,,"San Remo, Italy",,,,,DA_GEOCODIFICARE,,True
+,302,Toscolano Lago di Garda,Italy,,,"Toscolano Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,303,Gaeta,Italy,41.2029,13.621,"Gaeta, Italy",436446,https://www.windguru.cz/436446,,"https://www.google.com/maps/search/?api=1&query=41.2029,13.621",VERIFICATO,varun.surf,True
+,304,Vindicio,Italy,,,"Vindicio, Italy",,,,,DA_GEOCODIFICARE,,True
+,305,Salto di Fondi,Italy,,,"Salto di Fondi, Italy",,,,,DA_GEOCODIFICARE,,True
+,306,Lake Como,Italy,,,"Lake Como, Italy",,,,,DA_GEOCODIFICARE,,True
+,307,Lake Como,Italy,,,"Lake Como, Italy",,,,,DA_GEOCODIFICARE,,True
+,308,Desenzano Lago di Garda,Italy,,,"Desenzano Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,309,Porto Bergamini Lago di Garda,Italy,,,"Porto Bergamini Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,310,Punta Gro Sirmione Lago di Garda,Italy,45.4589,10.6089,"Punta Gro Sirmione Lago di Garda, Italy",501242,https://www.windguru.cz/501242,,"https://www.google.com/maps/search/?api=1&query=45.4589,10.6089",VERIFICATO,varun.surf,True
+,311,Silvaplana See,Italy,,,"Silvaplana See, Italy",,,,,DA_GEOCODIFICARE,,True
+,312,Navene Lago di Garda,Italy,,,"Navene Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,313,Ventimiglia,Italy,,,"Ventimiglia, Italy",,,,,DA_GEOCODIFICARE,,True
+,314,Spiaggia Brema Sirmione Lago di Garda,Italy,,,"Spiaggia Brema Sirmione Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,315,Molo Paraiso Lago di Garda,Italy,,,"Molo Paraiso Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,316,Foce del Sarca Lago di Garda,Italy,,,"Foce del Sarca Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,317,Conca d'Oro Lago di Garda,Italy,,,"Conca d'Oro Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,318,Lago Santa Croce,Italy,46.118847,12.348289,"Lago Santa Croce, Italy",501230,https://www.windguru.cz/501230,,"https://www.google.com/maps/search/?api=1&query=46.118847,12.348289",VERIFICATO,varun.surf + Windguru,True
+,319,Lago di Santa Croce,Italy,46.118847,12.348289,"Lago di Santa Croce, Italy",501230,https://www.windguru.cz/501230,,"https://www.google.com/maps/search/?api=1&query=46.118847,12.348289",VERIFICATO,varun.surf + Windguru,True
+,320,Schweinebucht Lago di Garda,Italy,,,"Schweinebucht Lago di Garda, Italy",,,,,DA_GEOCODIFICARE,,True
+,321,Torbole Lago di Garda,Italy,45.8704,10.8722,"Torbole Lago di Garda, Italy",,,,"https://www.google.com/maps/search/?api=1&query=45.8704,10.8722",VERIFICATO,kiteCOMPASS,True
